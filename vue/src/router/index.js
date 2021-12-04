@@ -5,6 +5,10 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Welcome from '../views/Welcome.vue'
+import Contact from '../views/Contact.vue'
+import About from '../views/About.vue'
+import Properties from '../views/Properties.vue'
 
 Vue.use(Router)
 
@@ -26,7 +30,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -49,6 +53,38 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/welcome",
+      name: "welcome",
+      component: Welcome,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/properties",
+      name: "properties",
+      component: Properties,
       meta: {
         requiresAuth: false
       }
