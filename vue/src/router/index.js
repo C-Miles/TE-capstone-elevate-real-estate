@@ -85,6 +85,7 @@ const router = new Router({
       path: "/properties",
       name: "properties",
       component: Properties,
+
       meta: {
         requiresAuth: false
       }
