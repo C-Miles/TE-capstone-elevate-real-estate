@@ -1,6 +1,11 @@
 <template>
 <div class="properties">
-<property-list-item v-for="property in properties" v-bind:key="property.id" v-bind:property="property" ></property-list-item>
+    <div >  
+       <property-list-item v-for="currentProperty in properties" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty"> 
+       </property-list-item> 
+        <!--<h1> {{property.zip}}</h1> -->
+    </div>
+
 </div>
   
 </template>
@@ -14,10 +19,13 @@ export default {
     components: {
         PropertyListItem
     },
+    
     computed: {
         properties() {
             const propList = this.$store.state.properties;
-            return propList;
+            return propList.filter(prop=>{
+                return prop;
+            });
         }
     },
 
