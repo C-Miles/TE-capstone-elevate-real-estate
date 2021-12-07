@@ -1,6 +1,9 @@
 <template>
 <div class="properties">
-<property-list-item v-for="property in properties" v-bind:key="property.id" v-bind:property="property" ></property-list-item>
+    <!-- input search field to filter -->
+    <p><input type="text" v-model="filter.propertyName"></p>
+    <property-list-item v-for="currentProperty in properties" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
+    </property-list-item> 
 </div>
   
 </template>
@@ -11,13 +14,32 @@ import propertyService from '../services/PropertyService'
 
 export default {
     name: 'properties-list',
+    data() {
+        return {
+            filterText: '',
+            filter: {
+                propertyName: "",
+                numberOfRooms: "",
+                monthlyRent: "",
+                zipcode: "",
+            }
+        }
+    },
     components: {
         PropertyListItem
     },
+    
     computed: {
         properties() {
             const propList = this.$store.state.properties;
-            return propList;
+            return propList.filter(prop=>{
+                return prop;
+            });
+        },
+        filteredProperties() {
+            return this.$store.state.properties.filter( (property) => {
+                return property.propertyName.includes(this.filterText);
+            });
         }
     },
 

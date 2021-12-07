@@ -59,9 +59,16 @@ CREATE TABLE unit (unit_id serial primary key,
        
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
        
-       SELECT property_name, rooms, monthly_rent, address, apartment_number, property.property_id, city, state, zip FROM property
+       -- list of properties
+       SELECT property_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
        
-       SELECT COUNT(property_id), property_name FROM property
-       GROUP BY property_name;
+       -- list of properties
+       SELECT * FROM property
+       JOIN address ON property.address_id = address.address_id;
+
+       
+       -- list of units
+       SELECT * FROM unit;
+       SELECT * FROM address;
