@@ -2,7 +2,7 @@
   <div class="home">
     <body>
       <h1>Welcome to Elevate Real Estate</h1>
-      <p>Find your perfect home to elevate your quality of home with us.</p>
+      <p>Find your perfect home to elevate your quality of home with us</p>
       <div class="apt-pics">
         <img src="../assets/FL.jpg" alt="apartment complex pic" />
       </div>
@@ -16,6 +16,9 @@ export default {
 };
 </script>
 <style>
+h1{
+  font-family: 'Baloo Bhaijaan 2', cursive,  Avenir, Helvetica, Arial, sans-serif;
+}
 body {
 
   color: rgb(237, 218, 214);
