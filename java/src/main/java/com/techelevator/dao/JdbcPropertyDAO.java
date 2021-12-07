@@ -28,9 +28,10 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
         while(rows.next()) {
+
             properties.add(mapRowToProperty(rows));
         }
-        System.out.println(properties);
+
         return properties;
     }
 

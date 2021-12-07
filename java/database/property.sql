@@ -42,13 +42,16 @@ CREATE TABLE unit (unit_id serial primary key,
         
        INSERT INTO property (property_name, address_id) VALUES ('Emerald Estates Drive', 2);
        
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 1, 2); 
+       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 2, 2); 
        
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1200, 1, 2);
+       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1200, 2, 2);
        
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 1, 2);
+       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
        
-       SELECT property_name, rooms, monthly_rent, address, apartment_number, city, state, zip FROM property
+       SELECT property_name, rooms, monthly_rent, address, apartment_number, property.property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
+       
+       SELECT COUNT(property_id), property_name FROM property
+       GROUP BY property_name;
        
