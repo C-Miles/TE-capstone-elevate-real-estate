@@ -9,7 +9,7 @@
    <p>
      <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
      <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
-     <input type="text" v-model="filter.monthlyRent" placeholder="Monthly Rent"/>
+     <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
     </p> 
     <property-list-item
       v-for="currentProperty in filteredList"
@@ -59,8 +59,15 @@ export default {
       if (this.filter.numberOfRooms > 0) {
         
         filteredProperties = filteredProperties.filter((property) => {
-          
-         return property.numberOfRooms.hasNumber(this.filter.numberOfRooms);
+          return property.numberOfRooms == this.filter.numberOfRooms;
+         
+       });
+      }
+      if (this.filter.monthlyRent > 0) {
+        
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.monthlyRent <= this.filter.monthlyRent;
+         
        });
       }
 
