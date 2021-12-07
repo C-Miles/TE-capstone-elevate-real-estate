@@ -17,7 +17,5 @@ export default {
 </script>
 
 <style>
- div {
-   background: white
- }
+
 </style>

@@ -2,7 +2,7 @@
 <div class="properties">
     <!-- input search field to filter -->
     <p><input type="text" v-model="filter.propertyName"></p>
-    <property-list-item v-for="currentProperty in filteredList" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
+    <property-list-item v-for="currentProperty in properties" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
     </property-list-item> 
 </div>
   
@@ -16,6 +16,7 @@ export default {
     name: 'properties-list',
     data() {
         return {
+            filterText: '',
             filter: {
                 propertyName: "",
                 numberOfRooms: "",
@@ -35,14 +36,10 @@ export default {
                 return prop;
             });
         },
-        filteredList() {
-            let filteredProperties = this.$store.state.properties;
-            if (this.filter.propertyName != "") {
-                filteredProperties = filteredProperties.filter( (property) => {
-                    property.propertyName.toLowerCase().includes(this.filter.propertyName.toLowerCase())
-                })
-            }
-            return filteredProperties;
+        filteredProperties() {
+            return this.$store.state.properties.filter( (property) => {
+                return property.propertyName.includes(this.filterText);
+            });
         }
     },
 
