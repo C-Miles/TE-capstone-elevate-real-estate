@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Property {
 
+    private String address;
     private long propertyId;
     private String propertyName;
     private int numberOfRooms;
@@ -12,6 +13,14 @@ public class Property {
     private String city;
     private String state;
     private int zipcode;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public long getPropertyId() {
         return propertyId;
