@@ -1,61 +1,95 @@
 <template>
-<div class="properties">
+  <div class="properties">
+
     <!-- input search field to filter -->
-    <p><input type="text" v-model="filter.propertyName"></p>
-    <property-list-item v-for="currentProperty in properties" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
-    </property-list-item> 
-</div>
-  
+   <!-- <select name="propertyName" id="propertyName">
+      <input type="text" v-model="filter.propertyName" />
+      <option value="test">Test</option>
+    </select> -->
+   <p>
+     <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
+     <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
+     <input type="text" v-model="filter.monthlyRent" placeholder="Monthly Rent"/>
+    </p> 
+    <property-list-item
+      v-for="currentProperty in filteredList"
+      v-bind:key="currentProperty.godzilla"
+      v-bind:property="currentProperty"
+    >
+    </property-list-item>
+  </div>
 </template>
-
 <script>
-import PropertyListItem from '../components/PropertyListItem'
-import propertyService from '../services/PropertyService'
-
+import PropertyListItem from "../components/PropertyListItem";
+import propertyService from "../services/PropertyService";
 export default {
-    name: 'properties-list',
-    data() {
-        return {
-            filterText: '',
-            filter: {
-                propertyName: "",
-                numberOfRooms: "",
-                monthlyRent: "",
-                zipcode: "",
-            }
-        }
+  name: "properties-list",
+  data() {
+    return {
+      filterText: "",
+      filter: {
+        propertyName: "",
+        numberOfRooms: "",
+        monthlyRent: "",
+        zipcode: "",
+      },
+    };
+  },
+  components: {
+    PropertyListItem,
+  },
+  computed: {
+    properties() {
+      return this.$store.state.properties;
     },
-    components: {
-        PropertyListItem
-    },
-    
-    computed: {
-        properties() {
-            const propList = this.$store.state.properties;
-            return propList.filter(prop=>{
-                return prop;
-            });
-        },
-        filteredProperties() {
-            return this.$store.state.properties.filter( (property) => {
-                return property.propertyName.includes(this.filterText);
-            });
-        }
-    },
+    // filteredProperties() {
+    //   return this.$store.state.properties.filter((property) => {
+    //     return property.propertyName.includes(this.filterText);
+    //   });
+    // },
+    filteredList() {
+      let filteredProperties = this.$store.state.properties;
+      if (this.filter.propertyName != "") {
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.propertyName
+            .toLowerCase()
+            .includes(this.filter.propertyName.toLowerCase());
+        });
+      }
+      if (this.filter.numberOfRooms > 0) {
+        
+        filteredProperties = filteredProperties.filter((property) => {
+          
+         return property.numberOfRooms.hasNumber(this.filter.numberOfRooms);
+       });
+      }
 
-    created() {
-            propertyService.getAllProperties()
-            .then( response => {
-                this.$store.commit("SET_PROPERTIES", response.data)
-            })
-            .catch( error => {
-                console.error(error);
-            })
-    }
+      return filteredProperties;
+    },
+  },
 
-}
+  created() {
+    propertyService
+      .getAllProperties()
+      .then((response) => {
+        this.$store.commit("SET_PROPERTIES", response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+};
 </script>
 
 <style>
 
+  input {
+    min-width: 20px;
+    padding: 8px;
+    margin: 0 4px 0 0;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 30px;
+    align: center
+  }
 </style>

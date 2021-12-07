@@ -8,6 +8,7 @@
     <p>Monthly Rent: {{property.monthlyRent}}</p>
 
   </div>
+ 
 </template>
 
 <script>
