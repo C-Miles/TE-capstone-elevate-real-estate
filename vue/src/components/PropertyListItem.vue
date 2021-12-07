@@ -1,6 +1,7 @@
 <template>
   <div>
-      <p >{{$store.state.properties}}</p>
+      <!--<p >{{$store.state.properties}}</p>-->
+      <p>{{property}}</p>
   </div>
 </template>
 

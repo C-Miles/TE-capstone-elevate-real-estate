@@ -3,6 +3,9 @@
     <body>
        <h1>Welcome to Elevate Real Estate</h1>
     <p>Elevate your quality of home with us</p>
+    <div class="apt-pics">
+      <v-img src="../assets/FL.jpg" alt="apartment complex pic" max-height="100" max-width="150"></v-img>
+      </div>
     </body>
    
   </div>
@@ -15,14 +18,11 @@ export default {
 };
 </script>
 <style>
-  h1{
-    color: red;
-    }
+
 
   body{
-    color:aqua;
-    background: url("../assets/FL.jpg");
-    background-size: cover;
+    background: black;
+    color: rgb(237, 218, 214);
     }
     
 </style>
