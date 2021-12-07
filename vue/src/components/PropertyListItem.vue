@@ -2,6 +2,12 @@
 
   <div class="container">
     <h2>{{property.propertyName}}</h2>
+    <div>
+      <!--<img src= require(../assets/${filename}) alt="highgrand apt">-->
+      <img v-bind:src="require('../assets/property-images/' + property.imageName)" />
+
+    </div>
+    
     <p>Address: {{property.address}}, {{property.city}}, {{property.state}} {{property.zipcode}}</p>
     <p>Unit: {{property.apartmentNumber}}</p>
     <p>Number of Rooms: {{property.numberOfRooms}}</p>
