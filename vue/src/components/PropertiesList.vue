@@ -1,7 +1,7 @@
 <template>
   <div class="properties">
     <!-- input search field to filter -->
-    <p><input type="text" v-model="filterText" /></p>
+    <p><input type="text" v-model="filter.propertyName" /></p>
     <property-list-item v-for="currentProperty in filteredList" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
     </property-list-item>
   </div>
@@ -29,16 +29,16 @@ export default {
     properties() {
       return this.$store.state.properties;
     },
-    // filteredProperties() {
-    //     return this.$store.state.properties.filter( (property) => {
-    //         return property.propertyName.includes(this.filterText);
-    //     });
-    // },
+    filteredProperties() {
+        return this.$store.state.properties.filter( (property) => {
+            return property.propertyName.includes(this.filterText);
+        });
+    },
     filteredList() {
       let filteredProperties = this.$store.state.properties;
-      if (this.filterText != "") {
+      if (this.filter.propertyName != "") {
          filteredProperties = filteredProperties.filter( (property) => {
-           property.propertyName.toLowerCase().includes(this.filterText.toLowerCase())
+          return property.propertyName.toLowerCase().includes(this.filter.propertyName.toLowerCase())
           })
       }
      return filteredProperties;

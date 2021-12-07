@@ -20,8 +20,7 @@ body {
 
   color: rgb(237, 218, 214);
   text-align: center;
-  background-image: linear-gradient(black, grey);
-  background-repeat: no-repeat;
+  background: black;
 }
 
 img {
