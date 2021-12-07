@@ -1,8 +1,22 @@
 <template>
   <div class="properties">
+
     <!-- input search field to filter -->
-    <p><input type="text" v-model="filter.propertyName" /></p>
-    <property-list-item v-for="currentProperty in filteredList" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
+   <!-- <select name="propertyName" id="propertyName">
+      <input type="text" v-model="filter.propertyName" />
+      <option value="test">Test</option>
+    </select> -->
+   <p>
+     <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
+     <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
+     <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
+     <input type="text" v-model="filter.zipcode" placeholder="Zipcode"/>
+    </p> 
+    <property-list-item
+      v-for="currentProperty in filteredList"
+      v-bind:key="currentProperty.godzilla"
+      v-bind:property="currentProperty"
+    >
     </property-list-item>
   </div>
 </template>
@@ -29,20 +43,43 @@ export default {
     properties() {
       return this.$store.state.properties;
     },
-    filteredProperties() {
-        return this.$store.state.properties.filter( (property) => {
-            return property.propertyName.includes(this.filterText);
-        });
-    },
+    // filteredProperties() {
+    //   return this.$store.state.properties.filter((property) => {
+    //     return property.propertyName.includes(this.filterText);
+    //   });
+    // },
     filteredList() {
       let filteredProperties = this.$store.state.properties;
       if (this.filter.propertyName != "") {
-         filteredProperties = filteredProperties.filter( (property) => {
-          return property.propertyName.toLowerCase().includes(this.filter.propertyName.toLowerCase())
-          })
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.propertyName
+            .toLowerCase()
+            .includes(this.filter.propertyName.toLowerCase());
+        });
       }
-     return filteredProperties;
-      
+      if (this.filter.numberOfRooms > 0) {
+        
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.numberOfRooms == this.filter.numberOfRooms;
+         
+       });
+      }
+      if (this.filter.monthlyRent > 0) {
+        
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.monthlyRent <= this.filter.monthlyRent;
+         
+       });
+      }
+      if (this.filter.zipcode > 0) {
+        
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.zipcode == this.filter.zipcode;
+         
+       });
+      }
+
+      return filteredProperties;
     },
   },
 
@@ -60,4 +97,14 @@ export default {
 </script>
 
 <style>
+
+  input {
+    min-width: 20px;
+    padding: 8px;
+    margin: 0 4px 0 0;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 30px;
+    align: center
+  }
 </style>
