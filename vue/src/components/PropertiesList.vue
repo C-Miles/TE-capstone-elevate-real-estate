@@ -1,8 +1,17 @@
 <template>
   <div class="properties">
+
     <!-- input search field to filter -->
-    <p><input type="text" v-model="filter.propertyName" /></p>
-    <property-list-item v-for="currentProperty in filteredList" v-bind:key="currentProperty.godzilla" v-bind:property="currentProperty">
+   <!-- <select name="propertyName" id="propertyName">
+      <input type="text" v-model="filter.propertyName" />
+      <option value="test">Test</option>
+    </select> -->
+   <p><input type="text" v-model="filter.propertyName" /></p> 
+    <property-list-item
+      v-for="currentProperty in filteredList"
+      v-bind:key="currentProperty.godzilla"
+      v-bind:property="currentProperty"
+    >
     </property-list-item>
   </div>
 </template>
@@ -30,19 +39,26 @@ export default {
       return this.$store.state.properties;
     },
     filteredProperties() {
-        return this.$store.state.properties.filter( (property) => {
-            return property.propertyName.includes(this.filterText);
-        });
+      return this.$store.state.properties.filter((property) => {
+        return property.propertyName.includes(this.filterText);
+      });
     },
     filteredList() {
       let filteredProperties = this.$store.state.properties;
       if (this.filter.propertyName != "") {
-         filteredProperties = filteredProperties.filter( (property) => {
-          return property.propertyName.toLowerCase().includes(this.filter.propertyName.toLowerCase())
-          })
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.propertyName
+            .toLowerCase()
+            .includes(this.filter.propertyName.toLowerCase());
+        });
       }
-     return filteredProperties;
-      
+      if (this.filter.numberOfRooms != "") {
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.numberOfRooms.toLowerCase().includes(this.filter.numberOfRooms.toLowerCase());
+        });
+      }
+
+      return filteredProperties;
     },
   },
 
