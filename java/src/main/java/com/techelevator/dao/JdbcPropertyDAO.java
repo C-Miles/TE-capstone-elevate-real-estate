@@ -29,11 +29,23 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
         while(rows.next()) {
-
             properties.add(mapRowToProperty(rows));
         }
-
         return properties;
+    }
+
+    @Override
+    public Property addProperty(Property property) {
+        property.setPropertyId(getMaxIdPlusOne());
+
+        // might need a propertyId?
+        String sqlForProperty = "INSERT INTO property (property_name, image_name, address_id) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sqlForProperty, property.getPropertyId(),
+
+        String sqlForAddress = "";
+        String sqlForUnit = "";
+
+        return property;
     }
 
     private Property mapRowToProperty(SqlRowSet rows) {
@@ -51,5 +63,25 @@ public class JdbcPropertyDAO implements PropertyDAO {
         property.setZipcode(rows.getInt("zip"));
 
         return property;
+    }
+
+    private long getMaxID() {
+        long maxID = 0;
+        List<Property> properties = getAllProperties();
+        for (Property property : properties) {
+            if (property.getPropertyId() > maxID) {
+                maxID = property.getPropertyId();
+            }
+        }
+        return maxID;
+    }
+
+    /**
+     * Adds 1 to the max id and returns it
+     *
+     * @return
+     */
+    private long getMaxIdPlusOne() {
+        return getMaxID() + 1;
     }
 }
