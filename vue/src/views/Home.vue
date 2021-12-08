@@ -1,10 +1,21 @@
 <template>
   <div class="home">
-    <body>
+    <body class="gradient">
       <h1>Welcome to Elevate Real Estate</h1>
-      <p>Find your perfect home to elevate your quality of home with us</p>
+      <p class="description">
+        Find your perfect home to elevate your quality of home with us
+      </p>
+
       <div class="apt-pics">
-        <img src="../assets/FL.jpg" alt="apartment complex pic" />
+          <h2 class="background-image">Find your dream rental</h2>
+          <p class="background-image">View your possibilities today that fit your desires</p>
+          <router-link
+            id="properties-link"
+            class="router-link-prop"
+            v-bind:to="{ name: 'properties' }"
+            >Search Properties</router-link
+          >
+        <!-- <img src="../assets/FL.jpg" alt="apartment complex pic" /> -->
       </div>
     </body>
   </div>
@@ -16,25 +27,70 @@ export default {
 };
 </script>
 <style>
-h1{
-  font-family: 'Baloo Bhaijaan 2', cursive,  Avenir, Helvetica, Arial, sans-serif;
+h1 {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 2px 2px black;
+ 
 }
-body {
 
-  color: rgb(237, 218, 214);
+.description {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+body.gradient {
+  color: whitesmoke;
   text-align: center;
-  background: black;
+  
+  /* background-image: linear-gradient(black, grey); */
 }
 
-img {
+.background-image {
+  /*background-color: black;
+  width: 30rem;
+  height: 1.5rem; */
+  color: whitesmoke;
+  text-align: center;
+}
 
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  border: 1rem thin pink;
-  border-style: solid;
-  border-radius: 5px;
+body {
+    background-color: rgb(29,41,81);
+}
 
+.apt-pics {
+display: block;
+text-align: center;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+ url(../assets/paradaypark.png) center / cover no-repeat;
+  padding: 10rem;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.router-link-prop {
+  background-color: whitesmoke;
+  text-decoration: none;
+  color:black;
+	display: inline-block; 
+	font-size: 1.1rem;
+	padding: 0.8rem;
+  margin: 20px;
+  height: 1rem;
+  width: 12rem;
+  text-decoration: none;
+  border-radius: 5px; 
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.router-link-prop:hover {
+  background: rgb(61,64,53);
+  color: white;
 }
 </style>

@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
-    <div id="nav">
+
+  <div class="wrapper" id="app">
+    <nav id="nav">
       <router-link class="router-link" v-bind:to="{ name: 'home' }"
         >Home</router-link
-      >&nbsp;|&nbsp;
-      <router-link class="router-link" v-bind:to="{ name: 'properties' }"
-        >Properties</router-link
-      >|&nbsp;
+      >
       <router-link class="router-link" v-bind:to="{ name: 'login' }"
         >Login</router-link
-      >&nbsp;|&nbsp;
+      >
       <router-link class="router-link" v-bind:to="{ name: 'register' }"
         >Register</router-link
-      >&nbsp;|&nbsp;
+      >
+      <router-link class="router-link" v-bind:to="{ name: 'about'}">About</router-link>
       <!-- <router-link class="router-link" v-bind:to="{ name: 'contact'}">Contact</router-link>&nbsp;|&nbsp;
-      <router-link class="router-link" v-bind:to="{ name: 'about'}">About</router-link>&nbsp;|&nbsp; -->
+      -->
 
       <router-link
         class="router-link"
@@ -22,38 +21,39 @@
         v-if="$store.state.token != ''"
         >Logout</router-link
       >&nbsp;
-    </div>
+    </nav>
     <router-view />
   </div>
 </template>
 <style>
-#nav {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.774);
-  margin: auto;
-  padding: 5% auto 5% auto;
-  width: 100%;
-}
 
 .router-link {
+  background-color: whitesmoke;
   text-decoration: none;
-  color: #101411;
-  margin: auto;
-  width: 100%;
+  color:black;
+	display: inline-block; 
+	font-size: 1.1rem;
+	padding: 0.8rem;
+  margin: 20px;
+  height: 1rem;
+  width: 8rem;
+  text-decoration: none;
+  border-radius: 5px; 
+	text-align: center;
+	text-transform: uppercase;
 }
 
 .router-link:hover {
-  text-decoration: underline;
-  color: blue;
+  background: rgb(61,64,53);
+  color: white;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-
   text-align: center;
   color: #2c3e50;
   max-width: 1000px;
   margin: 0 auto 0 auto;
+
 }
 
 </style>
