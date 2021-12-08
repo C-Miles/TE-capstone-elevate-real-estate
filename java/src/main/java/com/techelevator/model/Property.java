@@ -13,9 +13,8 @@ public class Property {
     private String apartmentNumber;
     private String city;
     private String state;
-
-
     private int zipcode;
+    private long addressID;
 
     public String getAddress() {
         return address;
@@ -95,6 +94,14 @@ public class Property {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public long getAddressID() {
+        return addressID;
+    }
+
+    public void setAddressID(long addressID) {
+        this.addressID = addressID;
     }
 
     @Override
