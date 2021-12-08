@@ -15,6 +15,7 @@ public class Property {
     private String state;
     private int zipcode;
     private long addressID;
+    private long unitID;
 
     public String getAddress() {
         return address;
@@ -102,6 +103,14 @@ public class Property {
 
     public void setAddressID(long addressID) {
         this.addressID = addressID;
+    }
+
+    public long getUnitID() {
+        return unitID;
+    }
+
+    public void setUnitID(long unitID) {
+        this.unitID = unitID;
     }
 
     @Override

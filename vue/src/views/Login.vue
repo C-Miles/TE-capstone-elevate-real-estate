@@ -22,6 +22,7 @@
         required
         autofocus
       />
+      
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,7 +32,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }" >Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" class="account-color" >Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -77,12 +78,15 @@ export default {
 <style>
 #login {
   color: whitesmoke;
-   display: flex;
-  flex-direction: column;
+  
+  
 }
 
 .sr-only {
-  display: block;
+  color: whitesmoke;
+  
 }
+
+
 
 </style>

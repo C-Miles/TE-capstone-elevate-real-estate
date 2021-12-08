@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
     private JdbcTemplate jdbcTemplate;
 
-    public JdbcPropertyDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public JdbcPropertyDAO(DataSource datasource) {
+        this.jdbcTemplate = new JdbcTemplate(datasource);
     }
 
     @Override

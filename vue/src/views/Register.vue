@@ -90,4 +90,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register {
+  color: whitesmoke;
+}
+
+.account-color {
+  text-decoration: none;
+  color: whitesmoke;
+}
+</style>
