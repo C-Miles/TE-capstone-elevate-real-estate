@@ -4,7 +4,7 @@
     <h2>{{property.propertyName}}</h2>
     <div>
       <!--<img src= require(../assets/${filename}) alt="highgrand apt">-->
-      <img v-bind:src="require('../assets/property-images/' + property.imageName)" />
+      <img class="img-thing" v-bind:src="require('../assets/property-images/' + property.imageName)" />
 
     </div>
     
@@ -29,4 +29,10 @@ export default {
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   color: whitesmoke;
 }
+
+.img-thing {
+  max-width: 70%;
+}
+
+
 </style>

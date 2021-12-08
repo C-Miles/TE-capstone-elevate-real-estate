@@ -2,6 +2,7 @@
   <div class="home">
     <body class="gradient">
       <h1>Welcome to Elevate Real Estate</h1>
+      <span></span>
       <p class="description">
         Find your perfect home to elevate your quality of home with us
       </p>
@@ -32,6 +33,7 @@ h1 {
   font-weight: bold;
   font-size: 40px;
   text-shadow: 2px 2px black;
+  padding: -9rem .5rem .5rem .5rem;
  
 }
 
@@ -78,11 +80,11 @@ text-align: center;
   text-decoration: none;
   color:black;
 	display: inline-block; 
-	font-size: 1.1rem;
-	padding: 0.8rem;
+	font-size: 1.2rem;
+	padding: 1.0rem 0.8rem 0.3rem 0.8rem;
   margin: 20px;
-  height: 1rem;
-  width: 12rem;
+  height: 2rem;
+  width: 15rem;
   text-decoration: none;
   border-radius: 5px; 
 	text-align: center;
@@ -92,5 +94,11 @@ text-align: center;
 .router-link-prop:hover {
   background: rgb(61,64,53);
   color: white;
+}
+
+span {
+   display: block;
+   width: 100%; 
+   border-top: 1px solid #ccc;
 }
 </style>

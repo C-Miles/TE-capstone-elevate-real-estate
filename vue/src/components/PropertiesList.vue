@@ -116,4 +116,13 @@ input {
 ::placeholder {
   color: whitesmoke;
 }
+
+.filter-boxes input {
+  padding: 5px 5px 5px 5px;
+  margin: 20px;
+  height: 1rem;
+  width: 8rem;
+  display: inline;
+  border-radius: 5px;
+}
 </style>

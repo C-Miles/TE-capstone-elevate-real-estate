@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Properties</h1>
+    <span></span>
     <properties-list></properties-list>
   </div>
 </template>
@@ -21,4 +22,6 @@ h1 {
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   color: whitesmoke;
 }
+
+
 </style>
