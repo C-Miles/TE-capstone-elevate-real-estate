@@ -32,6 +32,8 @@ export default {
 
 .img-thing {
   max-width: 70%;
+  
+  border: 5px solid #555;
 }
 
 

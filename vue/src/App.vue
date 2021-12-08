@@ -2,21 +2,21 @@
 
   <div class="wrapper" id="app">
     <nav id="nav">
-      <router-link class="router-link" v-bind:to="{ name: 'home' }"
+      <router-link class="router-link-idk" v-bind:to="{ name: 'home' }"
         >Home</router-link
       >
-      <router-link class="router-link" v-bind:to="{ name: 'login' }"
+      <router-link class="router-link-idk" v-bind:to="{ name: 'login' }"
         >Login</router-link
       >
-      <router-link class="router-link" v-bind:to="{ name: 'register' }"
+      <router-link class="router-link-idk" v-bind:to="{ name: 'register' }"
         >Register</router-link
       >
-      <router-link class="router-link" v-bind:to="{ name: 'about'}">About</router-link>
-      <!-- <router-link class="router-link" v-bind:to="{ name: 'contact'}">Contact</router-link>&nbsp;|&nbsp;
-      -->
+      <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
+       
+      
 
       <router-link
-        class="router-link"
+        class="router-link-idk"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
@@ -27,7 +27,7 @@
 </template>
 <style>
 
-.router-link {
+.router-link-idk {
   background-color: whitesmoke;
   text-decoration: none;
   color:black;
@@ -43,7 +43,7 @@
 	text-transform: uppercase;
 }
 
-.router-link:hover {
+.router-link-idk:hover {
   background: rgb(61,64,53);
   color: white;
 }

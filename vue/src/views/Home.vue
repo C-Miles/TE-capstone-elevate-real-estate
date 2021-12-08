@@ -19,6 +19,10 @@
         <!-- <img src="../assets/FL.jpg" alt="apartment complex pic" /> -->
       </div>
     </body>
+    <footer class="footer"><router-link class="router-link " v-bind:to="{ name: 'contact'}">Contact Elevate Real Estate
+     </router-link><p>(614) 781-1560</p><p class="address">4055 Maple Drive<br>Columbus, OH 43054<br>
+</p>
+<p class="copyright">Copyright © 2021 Elevate Real Estate - All Rights Reserved.</p></footer>
   </div>
 </template>
 
@@ -70,7 +74,7 @@ text-align: center;
     ),
  url(../assets/paradaypark.png) center / cover no-repeat;
   padding: 10rem;
-  margin: auto;
+  margin: auto 0 50px;
   max-width: 100%;
   height: auto;
 }
@@ -101,4 +105,25 @@ span {
    width: 100%; 
    border-top: 1px solid #ccc;
 }
+
+.footer {
+  color: whitesmoke;
+  
+  margin: 100px;
+}
+
+.router-link {
+  color: whitesmoke;
+  text-decoration: none;
+  
+}
+
+.router-link:hover {
+  font-size: 20px;
+  padding: 20px 20px 20px 20px;
+}
+
+
+
+
 </style>
