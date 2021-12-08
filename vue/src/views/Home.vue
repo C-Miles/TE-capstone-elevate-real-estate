@@ -7,16 +7,14 @@
       </p>
 
       <div class="apt-pics">
-        <section class="testing">
-          <h2>Find your dream rental</h2>
-          <p>View your possibilities today that fit your desires</p>
-           <router-link
+          <h2 class="background-image">Find your dream rental</h2>
+          <p class="background-image">View your possibilities today that fit your desires</p>
+          <router-link
             id="properties-link"
-            class="router-link"
+            class="router-link-prop"
             v-bind:to="{ name: 'properties' }"
-            >Properties</router-link
+            >Search Properties</router-link
           >
-        </section>
         <!-- <img src="../assets/FL.jpg" alt="apartment complex pic" /> -->
       </div>
     </body>
@@ -30,48 +28,69 @@ export default {
 </script>
 <style>
 h1 {
-  font-family: "Baloo Bhaijaan 2", Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 40px;
-  text-shadow: 2px 2px #00d9ff;
+  text-shadow: 2px 2px black;
+ 
 }
 
 .description {
   font-family: "Montserrat", sans-serif;
 }
 
-body.gradient {
-  /*
-box-sizing: border-box;
-line-height: 1.4; 
-	margin: 30px 50px;
-  */
 
-  color: rgb(237, 218, 214);
+body.gradient {
+  color: whitesmoke;
   text-align: center;
+  
   /* background-image: linear-gradient(black, grey); */
 }
 
-.testing {
-  display: block;
-  background: url(../assets/FL.jpg) right / cover no-repeat;
-  padding: 10rem;
-  width: 100%;
-  position: fixed;
-  top: 25rem;
-  left: 0;
- /* opacity: 80%; */
+.background-image {
+  /*background-color: black;
+  width: 30rem;
+  height: 1.5rem; */
+  color: whitesmoke;
+  text-align: center;
 }
 
-img {
-  /*
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  border: 1rem thin pink;
-  border-style: solid;
-  border-radius: 5px;
-*/
+body {
+    background-color: rgb(29,41,81);
+}
+
+.apt-pics {
+display: block;
+text-align: center;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
+    ),
+ url(../assets/paradaypark.png) center / cover no-repeat;
+  padding: 10rem;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.router-link-prop {
+  background-color: whitesmoke;
+  text-decoration: none;
+  color:black;
+	display: inline-block; 
+	font-size: 1.1rem;
+	padding: 0.8rem;
+  margin: 20px;
+  height: 1rem;
+  width: 12rem;
+  text-decoration: none;
+  border-radius: 5px; 
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.router-link-prop:hover {
+  background: rgb(61,64,53);
+  color: white;
 }
 </style>

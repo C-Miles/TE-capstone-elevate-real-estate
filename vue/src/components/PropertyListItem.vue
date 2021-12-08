@@ -25,5 +25,8 @@ export default {
 </script>
 
 <style>
-
+.container {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  color: whitesmoke;
+}
 </style>

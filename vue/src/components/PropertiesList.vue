@@ -1,17 +1,28 @@
 <template>
   <div class="properties">
-
     <!-- input search field to filter -->
-   <!-- <select name="propertyName" id="propertyName">
+    <!-- <select name="propertyName" id="propertyName">
       <input type="text" v-model="filter.propertyName" />
       <option value="test">Test</option>
     </select> -->
-   <p>
-     <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
-     <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
-     <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
-     <input type="text" v-model="filter.zipcode" placeholder="Zipcode"/>
-    </p> 
+    <p class="filter-boxes">
+      <input
+        type="text"
+        v-model="filter.propertyName"
+        placeholder="Property Name"
+      />
+      <input
+        type="text"
+        v-model="filter.numberOfRooms"
+        placeholder="Number of Rooms"
+      />
+      <input
+        type="text"
+        v-model="filter.monthlyRent"
+        placeholder="Max Monthly Rent"
+      />
+      <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
+    </p>
     <property-list-item
       v-for="currentProperty in filteredList"
       v-bind:key="currentProperty.godzilla"
@@ -58,25 +69,19 @@ export default {
         });
       }
       if (this.filter.numberOfRooms > 0) {
-        
         filteredProperties = filteredProperties.filter((property) => {
           return property.numberOfRooms == this.filter.numberOfRooms;
-         
-       });
+        });
       }
       if (this.filter.monthlyRent > 0) {
-        
         filteredProperties = filteredProperties.filter((property) => {
           return property.monthlyRent <= this.filter.monthlyRent;
-         
-       });
+        });
       }
       if (this.filter.zipcode > 0) {
-        
         filteredProperties = filteredProperties.filter((property) => {
           return property.zipcode == this.filter.zipcode;
-         
-       });
+        });
       }
 
       return filteredProperties;
@@ -97,14 +102,18 @@ export default {
 </script>
 
 <style>
+input {
+  min-width: 20px;
+  padding: 8px;
+  margin: 0 4px 0 0;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 30px;
+  align: center;
+  background-color: gray;
+}
 
-  input {
-    min-width: 20px;
-    padding: 8px;
-    margin: 0 4px 0 0;
-    border: 1px solid white;
-    border-radius: 5px;
-    height: 30px;
-    align: center
-  }
+::placeholder {
+  color: whitesmoke;
+}
 </style>
