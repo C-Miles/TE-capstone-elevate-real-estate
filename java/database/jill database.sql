@@ -21,7 +21,8 @@ CREATE TABLE address (address_id serial primary key,
         zip integer);
 
 CREATE TABLE property (property_id serial primary key,
-        property_name varchar(64),   
+        property_name varchar(64),  
+        image_name varchar(50),
         address_id bigint,
         
         CONSTRAINT fk_address_id foreign key (address_id) references address(address_id)
@@ -41,7 +42,7 @@ CREATE TABLE unit (unit_id serial primary key,
              
        INSERT INTO address (address, city, state, zip) VALUES ('129 Central Park Place', 'New York', 'NY', 11101);
         
-       INSERT INTO property (property_name, address_id) VALUES ('High Grand Flats', 1);
+       INSERT INTO property (property_name, image_name, address_id) VALUES ('High Grand Flats', 'highgrand.jpg', 1);
        
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 1500, 1, 1); 
        
@@ -51,7 +52,7 @@ CREATE TABLE unit (unit_id serial primary key,
        
        INSERT INTO address (address, city, state, zip) VALUES ('79 Arrowhead', 'Kansas City', 'KS', 23568);
         
-       INSERT INTO property (property_name, address_id) VALUES ('Emerald Estates Drive', 2);
+       INSERT INTO property (property_name, image_name, address_id) VALUES ('Emerald Estates Drive', 'emerald-estates.jpg', 2);
        
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 2, 2); 
        
@@ -60,7 +61,7 @@ CREATE TABLE unit (unit_id serial primary key,
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
        
        -- list of properties
-       SELECT property_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
+       SELECT property_name, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
        
