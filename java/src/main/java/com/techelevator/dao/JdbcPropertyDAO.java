@@ -38,12 +38,12 @@ public class JdbcPropertyDAO implements PropertyDAO {
     public Property addProperty(Property property) {
         property.setPropertyId(getMaxIdPlusOne());
 
-        // might need a propertyId?
-        String sqlForProperty = "INSERT INTO property (property_name, image_name, address_id) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sqlForProperty, property.getPropertyId(),
-
-        String sqlForAddress = "";
-        String sqlForUnit = "";
+//        // might need a propertyId?
+//        String sqlForProperty = "INSERT INTO property (property_name, image_name, address_id) VALUES (?, ?, ?)";
+//        jdbcTemplate.update(sqlForProperty, property.getPropertyId(),
+//
+////        String sqlForAddress = "";
+//        String sqlForUnit = "";
 
         return property;
     }
