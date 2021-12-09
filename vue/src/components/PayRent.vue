@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div id="container">
     <h1>Make a Payment</h1>
     <form>
         <div class="form-fields">
@@ -59,7 +59,7 @@ export default {
 
 <style>
 
-.container {
+#container {
     background-color: #585757;
     padding: 5px 20px 15px 20px;
     margin: 0% 20% 0% 20%;

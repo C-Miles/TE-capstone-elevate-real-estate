@@ -80,6 +80,7 @@ export default {
 
       return filteredProperties;
     },
+
   },
 
   created() {
@@ -104,7 +105,7 @@ input {
   border-radius: 5px;
   height: 30px;
   align: center;
-  background-color: gray;
+  
 }
 
 ::placeholder {
@@ -118,5 +119,6 @@ input {
   width: 8rem;
   display: inline;
   border-radius: 5px;
+  background-color: gray;
 }
 </style>
