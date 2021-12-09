@@ -73,3 +73,9 @@ CREATE TABLE unit (unit_id serial primary key,
        -- list of units
        SELECT * FROM unit;
        SELECT * FROM address;
+       
+       START TRANSACTION;
+       INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, ?, ?, ?);
+       INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'C', 10, 2, 2);
+       ROLLBACK;
+
