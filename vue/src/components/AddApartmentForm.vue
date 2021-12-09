@@ -62,13 +62,15 @@ export default {
         }
     },
 
+
     methods:  {
         saveProperty() {
             propertyService.addProperty(this.property)
             .then(response => {
-                if(response.status === 201) {
+                if(response.status === 200) {
                         alert("Boom added")
                             this.showForm = false
+                            
                 }
             })
         }
@@ -83,8 +85,6 @@ export default {
      max-width: 100%;
 
  }
-
-
 
  .propertyForm input[type=text]:focus {
   background-color: lightblue;

@@ -49,7 +49,7 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
     public Property insertAddress(Property property) {
 
-        String sqlAddress = "INSERT INTO address (address, city, state, zip) VALUES (?, ?, ?, ?) RETURNING ?";
+        String sqlAddress = "INSERT INTO address (address_id, address, city, state, zip) VALUES (default, ?, ?, ?, ?) RETURNING address_id";
 
         long addressId = jdbcTemplate.queryForObject(sqlAddress, long.class, property.getAddress(), property.getCity(), property.getState(), property.getZipcode());
         property.setAddressID(addressId);
@@ -58,8 +58,9 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
     //insert into property
     public Property insertProperty(Property property) {
-        String sqlProperty = "INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (default, ?, ?, ?) RETURNING ?";
+        String sqlProperty = "INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (default, ?, ?, ?) RETURNING property_id";
 
+        long addressId = getMaxID();
         long propertyId = jdbcTemplate.queryForObject(sqlProperty, long.class, property.getPropertyName(), property.getImageName(), property.getAddressID());
         property.setPropertyId(propertyId);
         return property;
@@ -67,7 +68,8 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
     // insert into unit
     public Property insertUnit(Property property) {
-        String sqlUnit = "INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, ?, ?, ?, ?, ?) RETURNING ?";
+
+        String sqlUnit = "INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, ?, ?, ?, ?, ?) RETURNING unit_id";
 
         long unitId = jdbcTemplate.queryForObject(sqlUnit, long.class, property.getNumberOfRooms(), property.getApartmentNumber(), property.getMonthlyRent(), property.getAddressID(), property.getPropertyId());
         property.setUnitID(unitId);
@@ -96,7 +98,7 @@ public class JdbcPropertyDAO implements PropertyDAO {
         List<Property> properties = getAllProperties();
         for (Property property : properties) {
             if (property.getPropertyId() > maxID) {
-                maxID = property.getPropertyId();
+                maxID = property.getAddressID();
             }
         }
         return maxID;
