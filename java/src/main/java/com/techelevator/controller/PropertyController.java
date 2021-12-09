@@ -9,6 +9,7 @@ import com.techelevator.model.Property;
 // import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -20,9 +21,10 @@ public class PropertyController {
     private ApplicationDAO applicationDAO;
     private PaymentDAO paymentDAO;
 
-    public PropertyController(PropertyDAO propertyDAO, ApplicationDAO applicationDAO) {
+    public PropertyController(PropertyDAO propertyDAO, ApplicationDAO applicationDAO, PaymentDAO paymentDAO) {
         this.propertyDAO = propertyDAO;
         this.applicationDAO = applicationDAO;
+        this.paymentDAO = paymentDAO;
     }
 
     @RequestMapping(path="/properties", method= RequestMethod.GET)

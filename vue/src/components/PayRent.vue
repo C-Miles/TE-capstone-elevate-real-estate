@@ -3,16 +3,18 @@
     <h1>Make a Payment</h1>
     <form>
         <div class="form-fields">
+            <label>Username</label>
+            <input type="text" v-model="payment.userName">
             <label>Unit Id</label>
-            <input type="text" v-model="payment.unit_id">
+            <input type="text" v-model="payment.unitId">
             <label>Credit Card No.</label>
-            <input type="text" v-model="payment.credit_card" placeholder="123 456 789 101">
+            <input type="text" v-model="payment.cardNumber" placeholder="123 456 789 101">
             <label>Expiration Date</label>
-            <input type="text" v-model="payment.expiration_date" placeholder="04/23">
+            <input type="text" v-model="payment.expirationDate" placeholder="04/23">
             <label>CVC</label>
             <input type="password" v-model="payment.cvc" placeholder="123">
             <label>Amount</label>
-            <input type="text" v-model="payment.amount" placeholder="$">
+            <input type="text" v-model="payment.amountPaid" placeholder="$">
         </div>
         <div>
             <button type="submit" @click.prevent="savePayment()">Complete Payment</button>
@@ -30,14 +32,14 @@ export default {
     data() {
         return{
             payment: {
-                payment_details_id: null,
-                user_id: null,
-                unit_id: null,
-                credit_card: null,
-                expiration_date: "",
+                paymentId: null,
+                userName: "",
+                unitId: null,
+                cardNumber: null,
+                expirationDate: "",
                 cvc: null,
-                amount: null,
-                payment_approved: false,
+                amountPaid: null,
+                paymentApproved: false,
             },
         }
     },

@@ -6,7 +6,7 @@ public class Payment {
 
     private long paymentId;
     private int unitId;
-    private int userId;
+    private String userName;
     private int cardNumber;
     private String expirationDate;
     private int cvc;
@@ -29,12 +29,12 @@ public class Payment {
         this.unitId = unitId;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getCardNumber() {
@@ -82,11 +82,11 @@ public class Payment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payment payment = (Payment) o;
-        return paymentId == payment.paymentId && unitId == payment.unitId && userId == payment.userId && cardNumber == payment.cardNumber && cvc == payment.cvc && amountPaid == payment.amountPaid && isPaymentApproved == payment.isPaymentApproved && Objects.equals(expirationDate, payment.expirationDate);
+        return paymentId == payment.paymentId && unitId == payment.unitId && cardNumber == payment.cardNumber && cvc == payment.cvc && amountPaid == payment.amountPaid && isPaymentApproved == payment.isPaymentApproved && Objects.equals(userName, payment.userName) && Objects.equals(expirationDate, payment.expirationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paymentId, unitId, userId, cardNumber, expirationDate, cvc, amountPaid, isPaymentApproved);
+        return Objects.hash(paymentId, unitId, userName, cardNumber, expirationDate, cvc, amountPaid, isPaymentApproved);
     }
 }
