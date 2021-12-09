@@ -75,6 +75,11 @@ CREATE TABLE application (
        INSERT INTO application (rent_app_id, first_name, last_name, email_address, phone_number, application_status, unit_id) VALUES (default, 'Woohoo', 'Boohoo', 'woohooboohoo@yahoo.com', '513-645-3987', 'approved', 1);
 
 
+       START TRANSACTION;
+INSERT INTO application (rent_app_id, first_name, last_name, email_address, phone_number, application_status, unit_id) VALUES (default, 'test', 'test', 'test', 'test', 'approved', 1) RETURNING rent_app_id;
+SELECT * FROM application;
+ROLLBACK;
+
        -- list of properties
        SELECT property_name, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
@@ -85,7 +90,7 @@ CREATE TABLE application (
        -- list of units
        SELECT * FROM unit;
        SELECT * FROM address;
-       START TRANSACTION;
+
        
        INSERT INTO property (property_name, image_name, address_id) VALUES (1, 1, 1) RETURNING property_id;
        ROLLBACK;
@@ -93,3 +98,4 @@ CREATE TABLE application (
        INSERT INTO address (address_id, address, city, state, zip) VALUES (default, 'testing', 'testing', 'te', 00000) RETURNING address_id;
        
 INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 1, 'C', 1000, 2, 2) RETURNING 6;
+
