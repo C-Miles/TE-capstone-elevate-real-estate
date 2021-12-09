@@ -1,28 +1,18 @@
 <template>
 
-  <div class="wrapper" id="app">
-    <nav id="nav">
-      <router-link class="router-link-idk" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'login' }"
-        >Login</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'register' }"
-        >Register</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
-       
-      
+  <div id="app">
 
-      <router-link
-        class="router-link-idk"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >&nbsp;
+    <nav id="nav">
+      <router-link class="router-link-idk" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class="router-link-idk" v-bind:to="{ name: 'login' }">Login</router-link>
+      <router-link class="router-link-idk" v-bind:to="{ name: 'register' }">Register</router-link>
+      <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
+      <router-link class="router-link-idk" v-bind:to="{ name: 'application'}">Apply</router-link>
+      <router-link class="router-link-idk" v-bind:to="{ name: 'payment'}">Pay Rent</router-link>      
+      <router-link class="router-link-idk" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </nav>
     <router-view />
+    
   </div>
 </template>
 <style>
@@ -33,8 +23,8 @@
   color:black;
 	display: inline-block; 
 	font-size: 1.1rem;
-	padding: 0.8rem;
-  margin: 20px;
+	padding: 0.5rem;
+  margin: 18px;
   height: 1rem;
   width: 8rem;
   text-decoration: none;
@@ -47,13 +37,11 @@
   background: rgb(61,64,53);
   color: white;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  color: #2c3e50;
-  max-width: 1000px;
-  margin: 0 auto 0 auto;
 
+#app {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0 auto 0 auto;
 }
 
 </style>

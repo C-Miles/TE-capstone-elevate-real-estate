@@ -1,21 +1,9 @@
 <template>
   <div class="properties">
     <p class="filter-boxes">
-      <input
-        type="text"
-        v-model="filter.propertyName"
-        placeholder="Property Name"
-      />
-      <input
-        type="text"
-        v-model="filter.numberOfRooms"
-        placeholder="Number of Rooms"
-      />
-      <input
-        type="text"
-        v-model="filter.monthlyRent"
-        placeholder="Max Monthly Rent"
-      />
+      <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
+      <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
+      <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
     <add-apartment-form></add-apartment-form>
@@ -80,6 +68,7 @@ export default {
 
       return filteredProperties;
     },
+
   },
 
   created() {
@@ -99,24 +88,22 @@ export default {
 input {
   min-width: 20px;
   padding: 8px;
-  margin: 0 4px 0 0;
-  border: 1px solid white;
   border-radius: 5px;
-  height: 30px;
-  align: center;
-  background-color: gray;
+  height: 30px;  
 }
 
 ::placeholder {
   color: whitesmoke;
+  text-align: center;
 }
 
 .filter-boxes input {
-  padding: 5px 5px 5px 5px;
-  margin: 20px;
-  height: 1rem;
-  width: 8rem;
+  margin: 10px;
+  height: 1.5rem;
+  width: 10rem;
   display: inline;
   border-radius: 5px;
+  background-color: rgb(139, 121, 121);
 }
+
 </style>
