@@ -49,10 +49,10 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
     public Property insertAddress(Property property) {
 
-        String sqlAddress = "INSERT INTO address (address, city, state, zip) VALUES (?, ?, ?, ?)";
+        String sqlAddress = "INSERT INTO address (address, city, state, zip) VALUES (?, ?, ?, ?) RETURNING ?";
 
-        jdbcTemplate.queryForObject(sqlAddress, long.class, property.getAddress(), property.getCity(), property.getState(), property.getZipcode());
-        //property.setAddressID(addressId);
+        long addressId = jdbcTemplate.queryForObject(sqlAddress, long.class, property.getAddress(), property.getCity(), property.getState(), property.getZipcode());
+        property.setAddressID(addressId);
         return property;
     }
 

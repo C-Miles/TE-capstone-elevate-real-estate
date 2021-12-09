@@ -1,10 +1,5 @@
 <template>
   <div class="properties">
-    <!-- input search field to filter -->
-    <!-- <select name="propertyName" id="propertyName">
-      <input type="text" v-model="filter.propertyName" />
-      <option value="test">Test</option>
-    </select> -->
     <p class="filter-boxes">
       <input
         type="text"
@@ -23,9 +18,11 @@
       />
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
+    <add-apartment-form></add-apartment-form>
+
     <property-list-item
       v-for="currentProperty in filteredList"
-      v-bind:key="currentProperty.godzilla"
+      v-bind:key="currentProperty.id"
       v-bind:property="currentProperty"
     >
     </property-list-item>
@@ -34,11 +31,11 @@
 <script>
 import PropertyListItem from "../components/PropertyListItem";
 import propertyService from "../services/PropertyService";
+import AddApartmentForm from './AddApartmentForm.vue';
 export default {
   name: "properties-list",
   data() {
     return {
-      filterText: "",
       filter: {
         propertyName: "",
         numberOfRooms: "",
@@ -49,16 +46,13 @@ export default {
   },
   components: {
     PropertyListItem,
+    AddApartmentForm
   },
   computed: {
     properties() {
       return this.$store.state.properties;
     },
-    // filteredProperties() {
-    //   return this.$store.state.properties.filter((property) => {
-    //     return property.propertyName.includes(this.filterText);
-    //   });
-    // },
+
     filteredList() {
       let filteredProperties = this.$store.state.properties;
       if (this.filter.propertyName != "") {
