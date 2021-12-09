@@ -8,6 +8,10 @@ getAllProperties() {
 
 addProperty(property) {
   return axios.post("/properties", property)
+},
+
+applyForApartment(application) {
+  return axios.post("/application", application)
 }
 
 }

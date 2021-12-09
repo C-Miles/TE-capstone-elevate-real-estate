@@ -10,6 +10,8 @@
 
       <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
 
+      <router-link class="router-link-idk" v-bind:to="{ name: 'application'}">Apply</router-link>
+
       <router-link class="router-link-idk" v-bind:to="{ name: 'payment'}">Pay Rent</router-link>
        
       <router-link class="router-link-idk" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;
@@ -25,8 +27,8 @@
   color:black;
 	display: inline-block; 
 	font-size: 1.1rem;
-	padding: 0.8rem;
-  margin: 20px;
+	padding: 0.5rem;
+  margin: 18px;
   height: 1rem;
   width: 8rem;
   text-decoration: none;
