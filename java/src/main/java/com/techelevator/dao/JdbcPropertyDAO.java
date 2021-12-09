@@ -4,6 +4,7 @@ import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 @Component
 public class JdbcPropertyDAO implements PropertyDAO {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public JdbcPropertyDAO(DataSource datasource) {
         this.jdbcTemplate = new JdbcTemplate(datasource);
@@ -28,23 +29,48 @@ public class JdbcPropertyDAO implements PropertyDAO {
                 "JOIN address ON property.address_id = address.address_id";
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
-        while(rows.next()) {
+        while (rows.next()) {
             properties.add(mapRowToProperty(rows));
         }
         return properties;
     }
 
+    @Transactional
     @Override
     public Property addProperty(Property property) {
-        property.setPropertyId(getMaxIdPlusOne());
+        // property.setPropertyId(getMaxIdPlusOne());
 
-        // might need a propertyId?
-        String sqlForProperty = "INSERT INTO property (property_name, image_name, address_id) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sqlForProperty, property.getPropertyId(),
+        Property forInsertProperty = insertAddress(property);
+        Property forInsertUnit = insertProperty(forInsertProperty);
+        Property completeProperty = insertUnit(forInsertUnit);
 
-        String sqlForAddress = "";
-        String sqlForUnit = "";
+        return completeProperty;
+    }
 
+    public Property insertAddress(Property property) {
+
+        String sqlAddress = "INSERT INTO address (address, city, state, zip) VALUES (?, ?, ?, ?)";
+
+        jdbcTemplate.queryForObject(sqlAddress, long.class, property.getAddress(), property.getCity(), property.getState(), property.getZipcode());
+        //property.setAddressID(addressId);
+        return property;
+    }
+
+    //insert into property
+    public Property insertProperty(Property property) {
+        String sqlProperty = "INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (default, ?, ?, ?) RETURNING ?";
+
+        long propertyId = jdbcTemplate.queryForObject(sqlProperty, long.class, property.getPropertyName(), property.getImageName(), property.getAddressID());
+        property.setPropertyId(propertyId);
+        return property;
+    }
+
+    // insert into unit
+    public Property insertUnit(Property property) {
+        String sqlUnit = "INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, ?, ?, ?, ?, ?) RETURNING ?";
+
+        long unitId = jdbcTemplate.queryForObject(sqlUnit, long.class, property.getNumberOfRooms(), property.getApartmentNumber(), property.getMonthlyRent(), property.getAddressID(), property.getPropertyId());
+        property.setUnitID(unitId);
         return property;
     }
 

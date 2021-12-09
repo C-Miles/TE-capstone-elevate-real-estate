@@ -45,8 +45,14 @@ CREATE TABLE unit (unit_id serial primary key,
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
        -- list of properties
-       SELECT * FROM property
+       SELECT * FROM property;
        JOIN address ON property.address_id = address.address_id;
        -- list of units
        SELECT * FROM unit;
        SELECT * FROM address;
+       START TRANSACTION;
+       
+       INSERT INTO property (property_name, image_name, address_id) VALUES (1, 1, 1) RETURNING propery_id;
+       ROLLBACK;
+       INSERT INTO property (property_name, image_name, address_id) VALUES (?, ?, ?);
+       INSERT INTO address (address_id, address, city, state, zip) VALUES (default, 'testing', 'testing', 'te', 00000) RETURNING address_id;
