@@ -70,7 +70,6 @@ export default {
                 if(response.status === 200) {
                         alert("Boom added")
                             this.showForm = false
-                            
                 }
             })
         }
