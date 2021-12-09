@@ -7,39 +7,24 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
 
-public class DAOPropertyTest{
+public class DAOPropertyTest extends DAOIntegrationTest {
     private JdbcPropertyDAO jdbcPropertyDAO;
     private JdbcTemplate jdbcTemplate;
-    private static SingleConnectionDataSource dataSource;
+    //private static SingleConnectionDataSource dataSource;
+
+
 
     @Before
     public void setUp() {
-        jdbcTemplate = new JdbcTemplate(dataSource);
-        jdbcPropertyDAO = new JdbcPropertyDAO(dataSource);
 
+        jdbcTemplate = new JdbcTemplate(getDataSource());
+        jdbcPropertyDAO = new JdbcPropertyDAO(getDataSource());
     }
-    @BeforeClass
-    public static void setupDataSource() {
-
-        dataSource = new SingleConnectionDataSource();
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/final_capstone");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres1");
-        dataSource.setAutoCommit(false);
-    }
-    @AfterClass
-    public static void closeDataSource() throws SQLException {
-        dataSource.destroy();
-    }
-    @After
-    public void rollback() throws SQLException {
-        dataSource.getConnection().rollback();
-    }
-
     @Test
     public void get_list() {
         //arrange
@@ -65,5 +50,4 @@ public class DAOPropertyTest{
         return property;
 
      }
-
 }
