@@ -3,21 +3,21 @@
     <h1>Make a Payment</h1>
     <form>
         <div class="form-fields">
-            <label>Username</label>
+            <label>Username:</label>
             <input type="text" v-model="payment.userName">
-            <label>Unit Id</label>
+            <label>Unit Id:</label>
             <input type="text" v-model="payment.unitId">
-            <label>Credit Card No.</label>
+            <label>Credit Card No.:</label>
             <input type="text" v-model="payment.cardNumber" placeholder="123 456 789 101">
-            <label>Expiration Date</label>
+            <label>Expiration Date:</label>
             <input type="text" v-model="payment.expirationDate" placeholder="04/23">
-            <label>CVC</label>
+            <label>CVC:</label>
             <input type="password" v-model="payment.cvc" placeholder="123">
-            <label>Amount</label>
+            <label>Amount:</label>
             <input type="text" v-model="payment.amountPaid" placeholder="$">
         </div>
         <div>
-            <button type="submit" @click.prevent="savePayment()">Complete Payment</button>
+            <button id="paymentbtn" type="submit" @click.prevent="savePayment()">Complete Payment</button>
         </div>
     </form>
 </div>
@@ -61,8 +61,6 @@ export default {
 
 #container {
     background-color: #585757;
-    padding: 5px 20px 15px 20px;
-    margin: 0% 20% 0% 20%;
     border-radius: 10px;
 }
 
@@ -77,9 +75,9 @@ export default {
     background-color: whitesmoke;
 }
 
-button {
+#paymentbtn {
     background-color: #0fa84a;
-    width: 60%;
+    width: 40%;
     color: white;
     padding: 12px;
     font-size: large;

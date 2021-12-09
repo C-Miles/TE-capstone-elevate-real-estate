@@ -1,7 +1,7 @@
 <template>
   <div id="container">
       
-      <h1>Apply </h1>
+      <h1>Apply for an Apartment</h1>
       <form class="appForm">
           <div class="form-fields">
           <label>First Name:</label>
@@ -12,11 +12,11 @@
           <input type="text" v-model="application.emailAddress">
           <label>Phone Number:</label>
           <input type="text" v-model="application.phoneNumber">
-          <label>Unit ID</label>
+          <label>Unit ID:</label>
           <input type="text" v-model="application.unitId">
           </div>
           <div>
-              <button type="submit" @click.prevent="submitApplication">Submit Application</button>
+              <button id="appbtn" type="submit" @click.prevent="submitApplication">Submit Application</button>
           </div>
       </form>
   </div>
@@ -38,7 +38,6 @@ export default {
                 appStatus: '',
                 unitId: null
             },
-
             showForm: false
         }
     },
@@ -61,7 +60,7 @@ export default {
 <style>
 
 #container {
-    background-color: #585757;
+    background-color: rgb(139, 121, 121);
     padding: 5px 20px 15px 20px;
     margin: 0% 20% 0% 20%;
     border-radius: 10px;
@@ -78,8 +77,8 @@ export default {
     background-color: whitesmoke;
 }
 
-button {
-    background-color: #0fa84a;
+#appbtn {
+    background-color: #803833;
     width: 60%;
     color: white;
     padding: 12px;
