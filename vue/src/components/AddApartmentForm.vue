@@ -15,7 +15,7 @@
            <input type="text" v-model="property.imageName">
         </div>
         <div>
-            <button type="submit" @click="saveProperty()">Add Property</button>
+            <button type="submit" @click.prevent="saveProperty()">Add Property</button>
         </div>
     </form>
 </div>
@@ -25,42 +25,49 @@
 <script>
 
 import propertyService from "../services/PropertyService"
+
 export default {
     name: "add-apartment-form",
     data() {
         return{
             property: {
                 address: '',
-                propertyId: '',
+                propertyId: 0,
                 propertyName: '',
                 imageName: '',
-                numberOfRooms: 0,
-                monthlyRent: 0,
-                apartmentNumber: 0,
+                numberOfRooms: null,
+                monthlyRent: null,
+                apartmentNumber: null,
                 city: '',
                 state: '',
-                zipcode: 0,
+                zipcode: null,
                 addressID: 0,
                 unitID: 0
-
             }
         }
     },
 
     methods:  {
         saveProperty() {
-                propertyService.addProperty(this.property)
-                .then(response => {
-                    if(response.status === 200) {
+            propertyService.addProperty(this.property)
+            .then(response => {
+                if(response.status === 201) {
                         alert("Boom added")
-                    }
-                })
+                }
+            })
         }
     }
-
 }
 </script>
 
 <style>
+ .propertyForm {
+     margin: 0;
+     padding: 3rem;
+     max-width: 100%;
+ }
 
+ .propertyForm input {
+     
+ }
 </style>
