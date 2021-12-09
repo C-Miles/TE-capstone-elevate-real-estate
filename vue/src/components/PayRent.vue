@@ -49,6 +49,7 @@ export default {
             paymentService.addPayment(this.payment).then( (response) => {
                 if(response.status === 200) {
                     alert("Payment Successful")
+                    this.$router.push(`/`)
                 }
             })
         }

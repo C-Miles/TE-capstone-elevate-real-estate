@@ -10,6 +10,7 @@ import Contact from '../views/Contact.vue'
 import About from '../views/About.vue'
 import Properties from '../views/Properties.vue'
 import PayRent from '../components/PayRent.vue'
+import Application from '../components/Application.vue'
 
 Vue.use(Router)
 
@@ -99,6 +100,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+
+    {
+      path: "/application",
+      name: "application",
+      component: Application,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 
