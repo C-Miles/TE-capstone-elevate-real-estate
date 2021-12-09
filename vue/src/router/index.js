@@ -9,6 +9,7 @@ import Welcome from '../views/Welcome.vue'
 import Contact from '../views/Contact.vue'
 import About from '../views/About.vue'
 import Properties from '../views/Properties.vue'
+import PayRent from '../components/PayRent.vue'
 
 Vue.use(Router)
 
@@ -85,7 +86,15 @@ const router = new Router({
       path: "/properties",
       name: "properties",
       component: Properties,
-
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/payment",
+      name: "payment",
+      component: PayRent,
+      // false for now, but might need to change
       meta: {
         requiresAuth: false
       }

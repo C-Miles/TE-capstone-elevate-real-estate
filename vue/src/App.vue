@@ -2,25 +2,17 @@
 
   <div class="wrapper" id="app">
     <nav id="nav">
-      <router-link class="router-link-idk" v-bind:to="{ name: 'home' }"
-        >Home</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'login' }"
-        >Login</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'register' }"
-        >Register</router-link
-      >
-      <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
-       
-      
+      <router-link class="router-link-idk" v-bind:to="{ name: 'home' }">Home</router-link>
 
-      <router-link
-        class="router-link-idk"
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >&nbsp;
+      <router-link class="router-link-idk" v-bind:to="{ name: 'login' }">Login</router-link>
+
+      <router-link class="router-link-idk" v-bind:to="{ name: 'register' }">Register</router-link>
+
+      <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
+
+      <router-link class="router-link-idk" v-bind:to="{ name: 'payment'}">Pay Rent</router-link>
+       
+      <router-link class="router-link-idk" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;
     </nav>
     <router-view />
   </div>
