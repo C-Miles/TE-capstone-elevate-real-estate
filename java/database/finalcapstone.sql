@@ -73,7 +73,7 @@ CREATE TABLE application (
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 2, 2);
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1200, 2, 2);
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
-       INSERT INTO payment_details (payment_details_id, user_name, unit_id, credit_card, expiration_date, cvc, amount, payment_approved) VALUES (default, 'username', 1, 123453223432, 'wow', 200, 200, true);
+       INSERT INTO payment_details (payment_details_id, username, unit_id, credit_card, expiration_date, cvc, amount, payment_approved) VALUES (default, 'username', 1, 123453223432, 'wow', 200, 200, true);
        INSERT INTO application (rent_app_id, first_name, last_name, email_address, phone_number, application_status, unit_id) VALUES (default, 'Woohoo', 'Boohoo', 'woohooboohoo@yahoo.com', '513-645-3987', 'approved', 1);
 
 
