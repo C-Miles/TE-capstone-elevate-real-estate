@@ -31,7 +31,7 @@
 
         </div>
         <div>
-            <button id="propertybtn" type="submit" @click.prevent="saveProperty()">Submit Property Details</button>
+            <button id="propertybtn" type="submit" @click="saveProperty()">Submit Property Details</button>
         </div>
     </form>
 </div>
@@ -43,7 +43,7 @@
 import propertyService from "../services/PropertyService"
 
 export default {
-    name: "add-apartment-form",
+    name: "add-property",
     data() {
         return{
             property: {
@@ -64,7 +64,7 @@ export default {
             showForm: false
         }
     },
-
+   
     methods:  {
         saveProperty() {
             propertyService.addProperty(this.property)

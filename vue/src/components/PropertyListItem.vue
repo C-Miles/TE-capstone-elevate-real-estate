@@ -13,6 +13,7 @@
         <p>Apartment: {{property.apartmentNumber}}</p>
         <p>Number of Rooms: {{property.numberOfRooms}}</p>
         <p>Monthly Rent: {{property.monthlyRent}}</p>
+        <router-link class="router-link-idk" v-bind:to="{ name: 'application'}">Apply</router-link>
       </div>
     </div>
 
