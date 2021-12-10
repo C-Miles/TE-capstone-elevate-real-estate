@@ -73,7 +73,7 @@ CREATE TABLE application (
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 2, 2);
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1200, 2, 2);
        INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
-       INSERT INTO payment_details (payment_details_id, user_name, unit_id, credit_card, expiration_date, cvc, amount, payment_approved) VALUES (default, 'username', 1, 123453223432, 'wow', 200, 200, true);
+       INSERT INTO payment_details (payment_details_id, username, unit_id, credit_card, expiration_date, cvc, amount, payment_approved) VALUES (default, 'username', 1, 123453223432, 'wow', 200, 200, true);
        INSERT INTO application (rent_app_id, first_name, last_name, email_address, phone_number, application_status, unit_id) VALUES (default, 'Woohoo', 'Boohoo', 'woohooboohoo@yahoo.com', '513-645-3987', 'approved', 1);
 
 
@@ -88,7 +88,7 @@ SELECT * FROM payment_details;
 ROLLBACK;
 
        -- list of properties
-       SELECT property_name, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
+       SELECT property_name, unit_id, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
        -- list of properties
@@ -105,3 +105,7 @@ ROLLBACK;
        INSERT INTO address (address_id, address, city, state, zip) VALUES (default, 'testing', 'testing', 'te', 00000) RETURNING address_id;
        
 INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 1, 'C', 1000, 2, 2) RETURNING 6;
+
+START TRANSACTION;
+INSERT INTO application(rent_app_id, first_name, last_name, email_address, phone_number, unit_id) VALUES (DEFAULT, 'sonam', 'miles', 'johndoe@aol.com', 1234567890, 1);
+ROLLBACK;
