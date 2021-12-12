@@ -20,6 +20,7 @@
 import PropertyListItem from "../components/PropertyListItem";
 import propertyService from "../services/PropertyService";
 import AddProperty from './AddProperty.vue';
+
 export default {
   name: "properties-list",
   data() {
