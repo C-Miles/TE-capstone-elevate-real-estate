@@ -27,8 +27,7 @@ export default {
 </script>
 
 <style>
-h1 {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+.gradient h1 {
   font-weight: bold;
   font-size: 40px;
   text-shadow: 2px 2px black;
@@ -91,7 +90,7 @@ span {
 
 .router-link {
   color: whitesmoke;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .router-link:hover {

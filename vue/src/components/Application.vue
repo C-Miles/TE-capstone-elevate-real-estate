@@ -13,7 +13,7 @@
           <label>Phone Number:</label>
           <input type="text" v-model="application.phoneNumber">
           <label>Unit ID:</label>
-          <input type="text" v-model="application.unitId">
+          <input type="text" v-model="application.unitId"> 
           </div>
           <div>
               <button id="appbtn" type="submit" @click.prevent="submitApplication">Submit Application</button>
@@ -21,10 +21,8 @@
       </form>
   </div>
 </template>
-
 <script>
 import propertyService from "../services/PropertyService"
-
 export default {
     name: "application",
     data() {
@@ -36,12 +34,11 @@ export default {
                 emailAddress: '',
                 phoneNumber: '',
                 appStatus: '',
-                unitId: null
+                unitId: Number(this.$route.params.unitID)
             },
             showForm: false
         }
     },
-
     methods: {
         submitApplication() {
             propertyService.applyForApartment(this.application)

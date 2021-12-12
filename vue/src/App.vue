@@ -7,7 +7,6 @@
       <router-link class="router-link-idk" v-bind:to="{ name: 'login' }">Login</router-link>
       <router-link class="router-link-idk" v-bind:to="{ name: 'register' }">Register</router-link>
       <router-link class="router-link-idk" v-bind:to="{ name: 'about'}">About</router-link>
-      <router-link class="router-link-idk" v-bind:to="{ name: 'application'}">Apply</router-link>
       <router-link class="router-link-idk" v-bind:to="{ name: 'payment'}">Pay Rent</router-link>      
       <router-link class="router-link-idk" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </nav>
@@ -39,9 +38,8 @@
 }
 
 #app {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
   text-align: center;
-  margin: 0 auto 0 auto;
 }
 
 </style>

@@ -20,7 +20,8 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    properties: []
+    properties: [],
+    activeUnitID: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +42,10 @@ export default new Vuex.Store({
     },
     SET_PROPERTIES(state, properties) {
       state.properties = properties;
+    },
+    SET_ACTIVE_PROPERTY (state, unitID) {
+      state.activeUnitID = unitID;
     }
+    
   }
 })
