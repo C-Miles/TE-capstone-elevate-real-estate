@@ -34,7 +34,7 @@ export default {
                 emailAddress: '',
                 phoneNumber: '',
                 appStatus: '',
-                unitId: null
+                unitId: Number(this.$route.params.unitID)
             },
             showForm: false
         }
@@ -49,12 +49,7 @@ export default {
                     this.$router.push(`/`)
                 }
             })
-        },
-          mounted() {
-    document.querySelector('#appbtn').addEventListener('click', function() {
-        return this.propertyListItem.unitId;
-    })
-    }
+        }
     }
 }
 </script>
