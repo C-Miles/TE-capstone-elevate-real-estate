@@ -12,6 +12,7 @@ CREATE TABLE address (address_id serial primary key,
         
 CREATE TABLE property (property_id serial primary key,
         property_name varchar(64),
+        image_name varchar,
         address_id bigint,
         CONSTRAINT fk_address_id foreign key (address_id) references address(address_id)
         );
