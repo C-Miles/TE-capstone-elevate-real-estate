@@ -7,7 +7,7 @@
 
     <div>
       <!--<img src= require(../assets/${filename}) alt="highgrand apt">-->
-      <img class="property-images" v-bind:src="require('../assets/property-images/' + property.imageName)" />
+      <img class="property-images" v-bind:src="property.imageName" />
       <div>
         <p>Address: {{property.address}}, {{property.city}}, {{property.state}} {{property.zipcode}}</p>
         <p>Apartment: {{property.apartmentNumber}}</p>
