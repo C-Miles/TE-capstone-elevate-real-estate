@@ -30,7 +30,7 @@
            
         </div>
         <div>
-            <button id="propertybtn" type="submit" @click.prevent="saveProperty()">Submit Property Details</button>
+            <button id="propertybtn" type="submit" @click="saveProperty()">Submit Property Details</button>
         </div>
     </form>
 </div>
@@ -64,7 +64,7 @@ console.log(storage)
 
 
 export default {
-    name: "add-apartment-form",
+    name: "add-property",
     data() {
         return{
             property: {
@@ -85,7 +85,7 @@ export default {
             showForm: false
         }
     },
-
+   
     methods:  {
         
         uploadImage(e) {

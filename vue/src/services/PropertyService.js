@@ -12,6 +12,6 @@ addProperty(property) {
 
 applyForApartment(application) {
   return axios.post("/application", application)
-}
+},
 
 }

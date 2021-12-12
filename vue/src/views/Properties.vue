@@ -19,7 +19,6 @@ export default {
 
 <style>
 h1 {
-  font-family: "Montserrat", Helvetica, Arial, sans-serif;
   color: whitesmoke;
 }
 
