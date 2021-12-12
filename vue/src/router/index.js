@@ -11,6 +11,7 @@ import About from '../views/About.vue'
 import Properties from '../views/Properties.vue'
 import PayRent from '../components/PayRent.vue'
 import Application from '../components/Application.vue'
+import PropertyDetail from '../views/PropertyDetail'
 
 Vue.use(Router)
 
@@ -92,6 +93,14 @@ const router = new Router({
       }
     },
     {
+      path: "/properties/:unitID",
+      name: "propertyDetail",
+      component: PropertyDetail,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/payment",
       name: "payment",
       component: PayRent,
@@ -100,9 +109,8 @@ const router = new Router({
         requiresAuth: false
       }
     },
-
     {
-      path: "/application",
+      path: "/application/:unitID?",
       name: "application",
       component: Application,
       meta: {
