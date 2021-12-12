@@ -11,11 +11,10 @@
       <router-link class="router-link-idk" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </nav>
     <router-view />
-    
   </div>
 </template>
-<style>
 
+<style>
 .router-link-idk {
   background-color: whitesmoke;
   text-decoration: none;
