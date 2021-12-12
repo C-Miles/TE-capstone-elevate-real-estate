@@ -26,9 +26,8 @@
            <input type="text" v-model="property.monthlyRent">
 
            <label>Add an Image</label>
-           <input type="text" v-model="property.imageName">
-           <!-- <input type="file" name="myImage" accept="image/png, image/gif, image/jpeg" /> -->
-
+           <input type="file" @change="uploadImage" id="photo" >
+           
         </div>
         <div>
             <button id="propertybtn" type="submit" @click="saveProperty()">Submit Property Details</button>
@@ -41,6 +40,28 @@
 <script>
 
 import propertyService from "../services/PropertyService"
+
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBZdSkDPIviP49g0eHpfEupMjLKziw57-s",
+  authDomain: "delta-elevate.firebaseapp.com",
+  projectId: "delta-elevate",
+  storageBucket: "delta-elevate.appspot.com",
+  messagingSenderId: "663161152067",
+  appId: "1:663161152067:web:76a10d278e84afc528aaf6",
+  measurementId: "${config.measurementId}"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const storage = getStorage(app)
+
+console.log(app)
+console.log(ref)
+console.log(storage)
+
 
 export default {
     name: "add-property",
@@ -66,6 +87,33 @@ export default {
     },
    
     methods:  {
+        
+        uploadImage(e) {
+
+          const file = e.target.files[0];
+
+          const storageRef = ref(storage, file.name)
+
+          uploadBytes(storageRef, file)
+          .then( snapshot => {
+              console.log(snapshot)
+
+            getDownloadURL(ref(storage,  file.name))
+            .then((url) => {
+
+            this.property.imageName = url
+              
+            
+                console.log(url)
+
+            }).catch((error) => {
+                console.log(error)
+            })
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+
         saveProperty() {
             propertyService.addProperty(this.property)
             .then(response => {
@@ -73,8 +121,10 @@ export default {
                         alert("Boom added")
                             this.showForm = false
                 }
+            }).catch((error) => {
+                console.log(error)
             })
-        }
+        }, 
     }
 }
 </script>

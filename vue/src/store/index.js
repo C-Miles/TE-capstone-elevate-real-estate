@@ -41,7 +41,10 @@ export default new Vuex.Store({
     },
     SET_PROPERTIES(state, properties) {
       state.properties = properties;
+
+
     },
+
     
   }
 })
