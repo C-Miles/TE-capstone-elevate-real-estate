@@ -59,10 +59,6 @@ const app = initializeApp(firebaseConfig);
 
 const storage = getStorage(app);
 
-console.log(app);
-console.log(ref);
-console.log(storage);
-
 export default {
   name: "add-property",
   data() {
