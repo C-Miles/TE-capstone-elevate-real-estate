@@ -12,6 +12,7 @@ import Properties from '../views/Properties.vue'
 import PayRent from '../components/PayRent.vue'
 import Application from '../components/Application.vue'
 import PropertyDetail from '../views/PropertyDetail'
+import Email from '../components/Email.vue'
 
 Vue.use(Router)
 
@@ -116,6 +117,14 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    }, 
+    {
+    path: "/email",
+    name: "email",
+    component: Email,
+    meta: {
+      requiresAuth: false
+    }
     }
   ]
 })
