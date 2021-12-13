@@ -21,7 +21,8 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     properties: [],
-    activeUnitID: 0
+    activeUnitID: 0,
+    filter: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {

@@ -5,7 +5,7 @@
     <p><img v-bind:src="currentProperty.imageName" /></p>
     <router-link
       class="router-link-idk"
-      :to="{ name: 'application', params: { unitID: unitID } }"
+      :to="{ name: 'application', params: { unitID: currentProperty.unitID } }"
       >Apply</router-link
     >
     <p>
