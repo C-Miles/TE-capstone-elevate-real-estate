@@ -4,7 +4,7 @@
       <h2>Find Your Ideal Spot</h2>
       <label>
         <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
-        <button @click="addLocationMarker">Find</button>
+        <button @click="addLocationMarker">Search</button>
       </label>
       <br />
     </div>
@@ -19,14 +19,18 @@
     </gmap-map>
   </div>
 </template>
- 
+ <style>
+   h2 {
+     color: whitesmoke;
+   }
+ </style>
 <script>
 export default {
   name: "add-google-map",
   data() {
     return {
       properties: [],
-      loaded: false,
+      //loaded: false,
       center: {
         lat: 39.96987,
         lng: -82.96812,
@@ -89,7 +93,7 @@ export default {
       console.log(test);
 
       for (let i = 0; i < this.properties.length; i++) {
-      this.load = false;
+      //this.loaded = false;
       this.addressObj.address_line_1 = this.properties[i].address;
       this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
       this.addressObj.city = this.properties[i].city;

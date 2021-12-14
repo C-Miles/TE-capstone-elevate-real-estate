@@ -18,7 +18,7 @@ public class DAOApplicationTest extends DAOIntegrationTest{
     }
     @Test
     public void get_application() {
-        
+
     }
 
     private Application insertApplication(long rentAppId, String firstName, String lastName, String emailAddress, String phoneNumber) {
