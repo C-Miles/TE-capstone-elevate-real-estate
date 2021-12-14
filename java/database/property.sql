@@ -3,7 +3,6 @@ DROP TABLE if exists payment_details;
 DROP TABLE if exists unit;
 DROP TABLE if exists property;
 DROP TABLE if exists address;
-
 CREATE TABLE address (address_id serial primary key,
         address varchar(64) not null,
         city varchar(32) not null,
@@ -52,17 +51,15 @@ CREATE TABLE application (
         
         CONSTRAINT fk_unit_id foreign key (unit_id) references unit(unit_id)  
 );
-           
                 
-       INSERT INTO address (address, city, state, zip) VALUES ('129 Central Park Place', 'New York', 'NY', 11101);
-       INSERT INTO property (property_name, address_id) VALUES ('High Grand Flats', 1);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 1500, 1, 1);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1800, 1, 1);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 2000, 1, 1);
-       INSERT INTO address (address, city, state, zip) VALUES ('79 Arrowhead', 'Kansas City', 'KS', 23568);
-       INSERT INTO property (property_name, address_id) VALUES ('Emerald Estates Drive', 2);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (1, 'A', 900, 2, 2);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (2, 'B', 1200, 2, 2);
-       INSERT INTO unit (rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (3, 'C', 1500, 2, 2);
-       INSERT INTO payment_details (payment_details_id, username, unit_id, credit_card, expiration_date, cvc, amount, payment_approved) VALUES (default, 'username', 1, 123453223432, 'wow', 200, 200, true);
-       INSERT INTO application (rent_app_id, first_name, last_name, email_address, phone_number, application_status, unit_id) VALUES (default, 'Woohoo', 'Boohoo', 'woohooboohoo@yahoo.com', '513-645-3987', 'approved', 1);
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '170 N Champion Ave', 'Columbus', 'OH', 43203);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Legacy Pointe', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1);
+INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 1, 1);
+
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '211 E Kelso Rd', 'Columbus', 'OH', 43202);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Clintonville Way', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 2);
+INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 2, 2);
+
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '6700 Allister Way', 'Columbus', 'OH', 43235);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Sawmill', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 3, 3);

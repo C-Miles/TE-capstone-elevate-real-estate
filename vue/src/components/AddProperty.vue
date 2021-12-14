@@ -61,6 +61,7 @@ const storage = getStorage(app);
 
 export default {
   name: "add-property",
+  // props: ['property'],
   data() {
     return {
       property: {
@@ -106,7 +107,10 @@ export default {
           console.log(error);
         });
     },
-
+    // v-on:click.prevent="addProperty"
+   // addProperty() {
+//this.$store.commit("ADD_PROPERTY", this.property );
+   // },
     saveProperty() {
       propertyService
         .addProperty(this.property)

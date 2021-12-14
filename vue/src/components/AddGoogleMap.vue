@@ -9,7 +9,7 @@
       <br />
     </div>
     <br />
-    <gmap-map :zoom="14" :center="center" style="width: 100%; height: 600px">
+    <gmap-map :zoom="10" :center="center" style="width: 100%; height: 600px">
       <gmap-marker
         :key="index"
         v-for="(m, index) in locationMarkers"
@@ -22,10 +22,10 @@
  
 <script>
 export default {
-  name: "AddGoogleMap",
-  props: ["properties"],
+  name: "add-google-map",
   data() {
     return {
+      properties: [],
       loaded: false,
       center: {
         lat: 39.96987,
@@ -36,18 +36,17 @@ export default {
       existingPlace: null,
       addressObj: 
         {
-          address: "",
-          apartmentNumber: "",
-          city: "",
-          state: "",
-          zipcode: "",
-          country: "United States",
+          address_line_1: '',
+          address_line_2: '',
+          city: '',
+          state: '',
+          zip_code: '',
+          country: 'United States',
         },
     };
   },
 
   mounted() {
-    // this.locateGeoLocation();
     this.createApartmentMarkers();
   },
 
@@ -75,8 +74,6 @@ export default {
         };
       });
     },
-    // filter and return properties list address in array
-    // loop through array to insert each address in properties list
     createApartmentMarkers: function () {
       this.$geocoder.send(this.addressObj, (response) => {
         const marker = response.results[0].geometry.location;
@@ -85,23 +82,31 @@ export default {
         this.loaded = true;
       });
     },
-    created() {
-      this.addressObj.address = this.properties.address;
-      this.addressObj.apartmentNumber = this.properties.apartmentNumber;
-      this.addressObj.city = this.properties.city;
-      this.addressObj.state = this.properties.state;
-      this.addressObj.zipcode = this.properties.zipcode;
-      // filteredProperties() {
-        // const properties = this.$store.state.properties;
-        // return properties.filter( (property) => {
-          // this.addressObjArray.address = property.address;
-          // this.addressObjArray.apartmentNumber = property.apartmentNumber;
-          // this.addressObjArray.city = property.city;
-          // this.addressObjArray.state = property.state;
-          // this.addressObjArray.zipcode = property.zipcode;
-        // });
-      // },
+    
+    activePropertiesList: function () {
+      this.properties = this.$store.state.properties;
+      let test = this.properties.length  
+      console.log(test);
+
+      for (let i = 0; i < this.properties.length; i++) {
+      this.load = false;
+      this.addressObj.address_line_1 = this.properties[i].address;
+      this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
+      this.addressObj.city = this.properties[i].city;
+      this.addressObj.state = this.properties[i].state;
+      this.addressObj.zip_code = this.properties[i].zipcode;
+      this.$geocoder.send(this.addressObj, (response) => {
+        const marker = response.results[0].geometry.location;
+        this.locationMarkers.push({ position: marker });
+        this.locPlaces.push(this.marker);
+        this.loaded = true;
+        console.log("Hiiii");
+      });
+      }
     },
+  },
+    created() {
+      this.activePropertiesList();
   },
 };
 </script>
