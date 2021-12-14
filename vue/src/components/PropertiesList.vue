@@ -6,7 +6,7 @@
       <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
-    <add-property></add-property>
+   <!-- <add-property></add-property> -->
 
     <property-list-item
       v-for="currentProperty in filteredList"
@@ -19,7 +19,7 @@
 <script>
 import PropertyListItem from "../components/PropertyListItem";
 import propertyService from "../services/PropertyService";
-import AddProperty from './AddProperty.vue';
+//import AddProperty from './AddProperty.vue';
 
 export default {
   name: "properties-list",
@@ -35,7 +35,7 @@ export default {
   },
   components: {
     PropertyListItem,
-    AddProperty
+    //AddProperty
   },
   computed: {
     properties() {

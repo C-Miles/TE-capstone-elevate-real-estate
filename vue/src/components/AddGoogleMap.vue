@@ -25,7 +25,7 @@ export default {
   name: "add-google-map",
   data() {
     return {
-      properties: [],
+      properties: this.$store.state.properties,
       loaded: false,
       center: {
         lat: 39.96987,
@@ -45,12 +45,38 @@ export default {
         },
     };
   },
-
-  mounted() {
-    this.createApartmentMarkers();
-  },
-
+    created() {
+    this.activePropertiesList();
+    },
+   
+  
+  //  mounted() {
+  //  this.createApartmentMarkers();
+  //},
   methods: {
+    createApartmentMarkers: function () {
+      this.$geocoder.send(this.addressObj, (response) => {
+        const marker = response.results[0].geometry.location;
+        this.locationMarkers.push({ position: marker });
+        this.locPlaces.push(this.marker);
+    console.log("Hiiii");
+      });
+    },
+    activePropertiesList: function () {
+      let test = this.properties.length  
+      console.log(test);
+
+      for (let i = 0; i < this.properties.length; i++) {
+    
+      this.addressObj.address_line_1 = this.properties[i].address;
+      this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
+      this.addressObj.city = this.properties[i].city;
+      this.addressObj.state = this.properties[i].state;
+      this.addressObj.zip_code = this.properties[i].zipcode;
+      this.loaded = true;
+      this.createApartmentMarkers();
+      }
+    },
     initMarker(loc) {
       this.existingPlace = loc;
     },
@@ -74,39 +100,6 @@ export default {
         };
       });
     },
-    createApartmentMarkers: function () {
-      this.$geocoder.send(this.addressObj, (response) => {
-        const marker = response.results[0].geometry.location;
-        this.locationMarkers.push({ position: marker });
-        this.locPlaces.push(this.marker);
-        this.loaded = true;
-      });
-    },
-    
-    activePropertiesList: function () {
-      this.properties = this.$store.state.properties;
-      let test = this.properties.length  
-      console.log(test);
-
-      for (let i = 0; i < this.properties.length; i++) {
-      this.load = false;
-      this.addressObj.address_line_1 = this.properties[i].address;
-      this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
-      this.addressObj.city = this.properties[i].city;
-      this.addressObj.state = this.properties[i].state;
-      this.addressObj.zip_code = this.properties[i].zipcode;
-      this.$geocoder.send(this.addressObj, (response) => {
-        const marker = response.results[0].geometry.location;
-        this.locationMarkers.push({ position: marker });
-        this.locPlaces.push(this.marker);
-        this.loaded = true;
-        console.log("Hiiii");
-      });
-      }
-    },
-  },
-    created() {
-      this.activePropertiesList();
   },
 };
 </script>

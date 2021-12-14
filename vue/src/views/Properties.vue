@@ -2,6 +2,7 @@
   <div>
     <h1>Properties</h1>
     <span></span>
+    <!-- v-if="firebaseLoaded" v-bind:property="property" -->
     <add-google-map id="googleMap" />
     <properties-list></properties-list>
   </div>
@@ -13,6 +14,7 @@ import AddGoogleMap from "@/components/AddGoogleMap";
 
 export default {
   name: "properties",
+  //firebaseLoaded: false,
   components: {
     PropertiesList,
     AddGoogleMap

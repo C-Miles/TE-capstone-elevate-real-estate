@@ -31,7 +31,7 @@
         <input type="file" @change="uploadImage" id="photo" />
       </div>
       <div>
-        <button id="propertybtn" type="submit" @click="saveProperty()">
+        <button id="propertybtn" type="submit" @click.prevent="saveProperty()">
           Submit Property Details
         </button>
       </div>
@@ -64,6 +64,8 @@ export default {
   // props: ['property'],
   data() {
     return {
+      pause: false,
+      testing: false,
       property: {
         address: "",
         propertyId: 0,
@@ -106,6 +108,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+        this.pause = true;
     },
     // v-on:click.prevent="addProperty"
    // addProperty() {
@@ -123,6 +126,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+        this.testing = true;
+        document.location.reload(true);
     },
   },
 };
