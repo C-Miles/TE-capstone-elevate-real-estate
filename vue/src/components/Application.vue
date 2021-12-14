@@ -12,8 +12,8 @@
           <input type="text" v-model="application.emailAddress">
           <label>Phone Number:</label>
           <input type="text" v-model="application.phoneNumber">
-          <label>Unit ID:</label>
-          <input type="text" v-model="application.unitId"> 
+          
+          <input type="hidden" v-model="application.unitId"> 
           </div>
           <div>
               <button id="appbtn" type="submit" @click.prevent="submitApplication">Submit Application</button>
