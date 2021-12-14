@@ -46,7 +46,10 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_PROPERTY (state, unitID) {
       state.activeUnitID = unitID;
-    }
+    },
+   // ADD_PROPERTY(state, property) {
+   //   state.properties.push(property);
+  //  }
     
   }
 })

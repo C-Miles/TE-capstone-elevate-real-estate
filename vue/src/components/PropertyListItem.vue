@@ -25,6 +25,7 @@
 export default {
   name: "property-list-item",
   props: ["property"],
+ 
 };
 </script>
 
