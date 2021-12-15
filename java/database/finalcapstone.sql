@@ -88,7 +88,7 @@ SELECT * FROM payment_details;
 ROLLBACK;
 
        -- list of properties
-       SELECT property_name, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
+       SELECT property_name, unit_id, image_name, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property
        JOIN unit ON property.property_id = unit.property_id
        JOIN address ON property.address_id = address.address_id;
        -- list of properties
@@ -105,3 +105,7 @@ ROLLBACK;
        INSERT INTO address (address_id, address, city, state, zip) VALUES (default, 'testing', 'testing', 'te', 00000) RETURNING address_id;
        
 INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 1, 'C', 1000, 2, 2) RETURNING 6;
+
+START TRANSACTION;
+INSERT INTO application(rent_app_id, first_name, last_name, email_address, phone_number, unit_id) VALUES (DEFAULT, 'sonam', 'miles', 'johndoe@aol.com', 1234567890, 1);
+ROLLBACK;

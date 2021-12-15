@@ -15,8 +15,6 @@
             <input type="password" v-model="payment.cvc" placeholder="123">
             <label>Amount:</label>
             <input type="text" v-model="payment.amountPaid" placeholder="$">
-        </div>
-        <div>
             <button id="paymentbtn" type="submit" @click.prevent="savePayment()">Complete Payment</button>
         </div>
     </form>
@@ -56,13 +54,7 @@ export default {
     }
 }
 </script>
-
 <style>
-
-#container {
-    background-color: #585757;
-    border-radius: 10px;
-}
 
 .form-fields {
     display: flex;
@@ -70,19 +62,18 @@ export default {
     margin: 20px;
 }
 
-.form-fields input {
+input {
     margin: 10px;
     background-color: whitesmoke;
 }
 
 #paymentbtn {
-    background-color: #0fa84a;
-    width: 40%;
-    color: white;
-    padding: 12px;
-    font-size: large;
-    border: none;
-    border-radius: 4px;
+	padding:15px 50px;
+	width:auto;
+	background:#1abc9c;
+	border:none;
+	color:white;
+    border-radius:10px;
 }
 
 </style>

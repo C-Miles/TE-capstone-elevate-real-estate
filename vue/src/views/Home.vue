@@ -1,22 +1,17 @@
 <template>
   <div class="home">
-    <body class="gradient">
+    <body class="banner">
       <h1>Welcome to Elevate Real Estate</h1>
-      <span></span>
-      <p>Find your perfect home to elevate your quality of home with us</p>
-
-      <div id="home-image">
-          <h2 class="property-search">Find your dream rental</h2>
-          <p class="property-search">View your possibilities today that fit your desires</p>
-          <router-link id="properties-link" class="router-link-prop" v-bind:to="{ name: 'properties' }">Search Properties</router-link>
-      </div>
-
+      <p class="property-search">
+        View your possibilities today that fit your desires
+      </p>
+      <router-link
+        id="properties-link"
+        class="router-link-prop"
+        v-bind:to="{ name: 'properties' }"
+        >Search Properties</router-link
+      >
     </body>
-    <footer class="footer">
-      <router-link class="router-link " v-bind:to="{ name: 'contact'}">Contact Elevate Real Estate</router-link>
-      <p>(614) 781-1560</p><p class="address">4055 Maple Drive<br>Columbus, OH 43054<br></p>
-      <p class="copyright">Copyright © 2021 Elevate Real Estate - All Rights Reserved.</p>
-    </footer>
   </div>
 </template>
 
@@ -27,75 +22,34 @@ export default {
 </script>
 
 <style>
-.gradient h1 {
-  font-weight: bold;
-  font-size: 40px;
-  text-shadow: 2px 2px black;
-  padding: -9rem .5rem .5rem .5rem;
-}
-
-body.gradient {
-  color: whitesmoke;
+.banner {
   text-align: center;
+  margin: 10% auto;
 }
 
-body {
-  background-color: rgb(17, 27, 61);
+h1 {
+  padding: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 3rem;
 }
 
-#home-image {
-  display: block;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.25)
-    ), url(../assets/paradaypark.png) center / cover no-repeat;
-  text-align: center;
-  padding: 10rem;
-  margin: auto 0 50px;
-  max-width: 100%;
-  height: auto;
+banner p {
+  padding: 1rem;
+  font-size: large
 }
 
-.router-link-prop {
-  background-color: whitesmoke;
+#properties-link {
   text-decoration: none;
-  color:black;
-	display: inline-block; 
-	font-size: 1.2rem;
-	padding: 1.0rem 0.8rem 0.3rem 0.8rem;
-  margin: 20px;
-  height: 2rem;
-  width: 15rem;
-  text-decoration: none;
-  border-radius: 5px; 
-	text-align: center;
-	text-transform: uppercase;
+    font-size:18px;
+    color: rgba(255,255,255,1);
+    margin: 90px auto;
+    display: block;
+    font-weight: bold;
+    border: 2px solid rgba(255,255,255,1);
+    width: 18%;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    border-radius: 7px;
 }
-
-.router-link-prop:hover {
-  background: rgb(61,64,53);
-  color: white;
-}
-
-span {
-   display: block;
-   width: 100%; 
-   border-top: 1px solid whitesmoke;
-}
-
-.footer {
-  color: whitesmoke;
-  margin: 100px;
-}
-
-.router-link {
-  color: whitesmoke;
-  text-decoration: underline;
-}
-
-.router-link:hover {
-  font-size: 20px;
-  padding: 20px 20px 20px 20px;
-}
-
 </style>
