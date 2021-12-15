@@ -1,7 +1,7 @@
 <template>
 <div id="container">
-    <h1>Make a Payment</h1>
-    <form>
+    <h1 v-show="showForm">Make a Payment</h1>
+    <form v-show="showForm">
         <div class="form-fields">
             <label>Username:</label>
             <input type="text" v-model="payment.userName">
@@ -18,6 +18,23 @@
             <button id="paymentbtn" type="submit" @click.prevent="savePayment()">Complete Payment</button>
         </div>
     </form>
+    <div v-show="showReciept" class="receipt">
+        <h2>Payment Successful</h2>
+        <br>
+        <div>
+        <p>Thank you for your payment: {{payment.userName}}</p>
+        <br>
+        <p> Recieved On: {{new Date().toLocaleString()}}</p>
+        <br>
+        <p>Amount Paid: {{payment.amountPaid}}</p>
+        <br>
+        <p>Confirmation Code: {{codeGenerator()}} </p>
+        <br>
+        <button id="paymentbtn" @click.prevent="goHome">Return Home</button>
+         </div>
+
+        
+    </div>
 </div>
 </template>
 
@@ -39,6 +56,8 @@ export default {
                 amountPaid: null,
                 paymentApproved: false,
             },
+            showForm: true,
+            showReciept: false
         }
     },
 
@@ -46,11 +65,22 @@ export default {
         savePayment() {
             paymentService.addPayment(this.payment).then( (response) => {
                 if(response.status === 200) {
-                    alert("Payment Successful")
-                    this.$router.push(`/`)
+                    // alert("Payment Successful")
+                    // this.$router.push(`/`)
+                    this.showForm = false;
+                    this.showReciept = true
                 }
             })
+        },
+        codeGenerator() {
+            const randomstring = Math.random().toString(36).slice(-8)
+            return randomstring
+        },
+        goHome() {
+            this.$router.push('/')
         }
+
+
     }
 }
 </script>
@@ -74,6 +104,26 @@ input {
 	border:none;
 	color:white;
     border-radius:10px;
+}
+
+.receipt {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    margin: 10px;
+    width:100%;
+    padding:70px 0px 270px 0px;
+    min-height: 100%;
+
+}
+
+#container {
+    min-height: 100%
+}
+
+p {
+    margin: 20px;
+    margin: 10px;
 }
 
 </style>
