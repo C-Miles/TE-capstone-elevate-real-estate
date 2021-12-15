@@ -53,35 +53,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-#container {
-    background-color: rgb(139, 121, 121);
-    padding: 5px 20px 15px 20px;
-    margin: 0% 20% 0% 20%;
-    border-radius: 10px;
-}
-
-.form-fields {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-}
-
-.form-fields input {
-    margin: 10px;
-    background-color: whitesmoke;
-}
-
-#appbtn {
-    background-color: #803833;
-    width: 60%;
-    color: white;
-    padding: 12px;
-    font-size: large;
-    border: none;
-    border-radius: 4px;
-}
-
-</style>

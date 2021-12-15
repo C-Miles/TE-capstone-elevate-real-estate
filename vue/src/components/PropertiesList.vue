@@ -1,25 +1,38 @@
 <template>
-  <div class="properties">
+  <div>
     <p class="filter-boxes">
-      <input type="text" v-model="filter.propertyName" placeholder="Property Name"/>
-      <input type="text" v-model="filter.numberOfRooms" placeholder="Number of Rooms"/>
-      <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
+      <input
+        type="text"
+        v-model="filter.propertyName"
+        placeholder="Property Name"
+      />
+      <input
+        type="text"
+        v-model="filter.numberOfRooms"
+        placeholder="Number of Rooms"
+      />
+      <input
+        type="text"
+        v-model="filter.monthlyRent"
+        placeholder="Max Monthly Rent"
+      />
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
     <add-property></add-property>
-
-    <property-list-item
-      v-for="currentProperty in filteredList"
-      v-bind:key="currentProperty.id"
-      v-bind:property="currentProperty"
-    >
-    </property-list-item>
+    <div class="properties">
+      <property-list-item
+        v-for="currentProperty in filteredList"
+        v-bind:key="currentProperty.id"
+        v-bind:property="currentProperty"
+      >
+      </property-list-item>
+    </div>
   </div>
 </template>
 <script>
 import PropertyListItem from "../components/PropertyListItem";
 import propertyService from "../services/PropertyService";
-import AddProperty from './AddProperty.vue';
+import AddProperty from "./AddProperty.vue";
 
 export default {
   name: "properties-list",
@@ -35,7 +48,7 @@ export default {
   },
   components: {
     PropertyListItem,
-    AddProperty
+    AddProperty,
   },
   computed: {
     properties() {
@@ -69,7 +82,6 @@ export default {
 
       return filteredProperties;
     },
-
   },
 
   created() {
@@ -86,25 +98,10 @@ export default {
 </script>
 
 <style>
-input {
-  min-width: 20px;
-  padding: 8px;
-  border-radius: 5px;
-  height: 30px;  
+.properties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  max-width: 100%
 }
-
-::placeholder {
-  color: whitesmoke;
-  text-align: center;
-}
-
-.filter-boxes input {
-  margin: 10px;
-  height: 1.5rem;
-  width: 10rem;
-  display: inline;
-  border-radius: 5px;
-  background-color: rgb(139, 121, 121);
-}
-
 </style>

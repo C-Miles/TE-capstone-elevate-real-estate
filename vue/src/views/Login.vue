@@ -76,17 +76,9 @@ export default {
 };
 </script>
 <style>
-#login {
-  color: whitesmoke;
-  
-  
-}
 
 .sr-only {
-  color: whitesmoke;
-  
+  color: whitesmoke; 
 }
-
-
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2>Find Your Ideal Spot</h2>
+      <h2>Add A Pin</h2>
       <label>
         <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
         <button @click="addLocationMarker">Search</button>
@@ -19,11 +19,7 @@
     </gmap-map>
   </div>
 </template>
- <style>
-   h2 {
-     color: whitesmoke;
-   }
- </style>
+
 <script>
 export default {
   name: "add-google-map",
@@ -114,3 +110,7 @@ export default {
   },
 };
 </script>
+
+<style>
+
+</style>

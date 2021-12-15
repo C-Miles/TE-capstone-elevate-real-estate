@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Details {{ currentProperty.propertyName }}</h1>
+    <h1>Details for {{ currentProperty.propertyName }}</h1>
     <p>{{ currentProperty.address }}</p>
     <p><img v-bind:src="currentProperty.imageName" /></p>
     <router-link
@@ -8,6 +8,7 @@
       :to="{ name: 'application', params: { unitID: currentProperty.unitID } }"
       >Apply</router-link
     >
+    <div id="property-details">
     <p>
       Important: Don’t miss out on this apartment through lengthy email
       exchanges and phone calls - apply for a lease now, by selecting your
@@ -21,7 +22,7 @@
       house a home. Explore all of our amenities that will create a relaxing and
       enjoyable environment for you and your family.
     </p>
-    >
+    </div>
   </div>
 </template>
 
@@ -43,10 +44,12 @@ export default {
   },
 };
 </script>
-
 <style>
+div {
+  text-align: center
+}
 
-p {
-    color: white
+#property-details {
+  width: 60%;
 }
 </style>

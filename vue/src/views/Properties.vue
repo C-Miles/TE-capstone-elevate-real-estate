@@ -2,7 +2,7 @@
   <div>
     <h1>Properties</h1>
     <span></span>
-    <add-google-map id="googleMap" />
+    <add-google-map id="googleMap" v-if="$store.state.properties.length > 0"/>
     <properties-list></properties-list>
   </div>
 </template>
@@ -19,18 +19,3 @@ export default {
   },
 };
 </script>
-
-<style>
-h1 {
-  color: whitesmoke;
-}
-
-#googleMap {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-  margin-top: 50px;
-}
-</style>
