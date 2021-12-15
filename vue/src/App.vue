@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="nav-menu">
-      <div id="logo">Elevate Real Estate</div>
+      <div id="logo"><img src=""/> Elevate Real Estate</div>
       <div id="menu">
         <ul>
           <li>
@@ -27,7 +27,7 @@
             >
           </li>
           <li>
-            <router-link class="router-link-idk" v-bind:to="{ name: 'payment' }"
+            <router-link v-show="$store.state.admin == 'ROLE_USER'" class="router-link-idk" v-bind:to="{ name: 'payment' }"
               >Pay Rent</router-link
             >
           </li>

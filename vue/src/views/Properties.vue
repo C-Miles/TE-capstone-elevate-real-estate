@@ -13,6 +13,7 @@ import AddGoogleMap from "@/components/AddGoogleMap";
 
 export default {
   name: "properties",
+  //firebaseLoaded: false,
   components: {
     PropertiesList,
     AddGoogleMap
