@@ -9,12 +9,17 @@
       <br />
     </div>
     <br />
-    <gmap-map :zoom="10" :center="center" style="width: 100%; height: 600px">
+    <gmap-map :zoom="10" :center="center" style="width: 100%; height: 600px" class="google-map">
       <gmap-marker
         :key="index"
         v-for="(m, index) in locationMarkers"
         :position="m.position"
-        @click="center = m.position"
+        :draggable="true"
+        :clickable="true"
+        :label="'Click'"
+        
+        :title="customInfo"
+        @click="center = m.position; title = display" id="Marker" 
       ></gmap-marker>
     </gmap-map>
   </div>
@@ -27,10 +32,12 @@ export default {
     return {
       properties: [],
       //loaded: false,
+     customInfo: 'teeeest',
       center: {
         lat: 39.96987,
         lng: -82.96812,
       },
+      Marker: null,
       locationMarkers: [],
       locPlaces: [],
       existingPlace: null,
@@ -46,10 +53,13 @@ export default {
   },
 
   mounted() {
-    this.createApartmentMarkers();
+    //this.createApartmentMarkers();
   },
 
   methods: {
+    //code adding
+    //document.getElementById("Marker").addEventListener("click", ),
+
     initMarker(loc) {
       this.existingPlace = loc;
     },
@@ -58,14 +68,30 @@ export default {
         const marker = {
           lat: this.existingPlace.geometry.location.lat(),
           lng: this.existingPlace.geometry.location.lng(),
+          
+            
         };
-        this.locationMarkers.push({ position: marker });
-        this.locPlaces.push(this.existingPlace);
-        this.center = marker;
-        this.existingPlace = null;
+        console.log(marker);
+        //adding code
+        // marker = new google.maps.Marker({
+        //   map, 
+        //   animation: google.maps.Animation.DROP,
+        // });
+        // marker.addListener("click", toggleBounce);
+        // this.locationMarkers.push({ position: marker });
+        // this.locPlaces.push(this.existingPlace);
+        // this.center = marker;
+        // this.existingPlace = null;
       }
     },
-    locateGeoLocation: function () {
+  // toggleBounce: function () {
+  //   if(marker.getAnimation() !== null) {
+  //     marker.setAnimation(null);
+  //   } else {
+  //     marker.setAnimation(google.maps.Animation.BOUNCE);
+  //   }
+  // },
+ eGeoLocation: function () {
       navigator.geolocation.getCurrentPosition((res) => {
         this.center = {
           lat: res.coords.latitude,
@@ -76,8 +102,10 @@ export default {
     createApartmentMarkers: function () {
       this.$geocoder.send(this.addressObj, (response) => {
         const marker = response.results[0].geometry.location;
+       
         this.locationMarkers.push({ position: marker });
         this.locPlaces.push(this.marker);
+        console.log(this.locationMarkers[0]);
         this.loaded = true;
       });
     },
@@ -88,18 +116,26 @@ export default {
       console.log(test);
 
       for (let i = 0; i < this.properties.length; i++) {
-        //this.loaded = false;
-        this.addressObj.address_line_1 = this.properties[i].address;
-        this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
-        this.addressObj.city = this.properties[i].city;
-        this.addressObj.state = this.properties[i].state;
-        this.addressObj.zip_code = this.properties[i].zipcode;
-        this.$geocoder.send(this.addressObj, (response) => {
-          const marker = response.results[0].geometry.location;
-          this.locationMarkers.push({ position: marker});
-          this.locPlaces.push(this.marker);
-          this.loaded = true;
-        });
+      //this.loaded = false;
+      this.addressObj.address_line_1 = this.properties[i].address;
+      this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
+      this.addressObj.city = this.properties[i].city;
+      this.addressObj.state = this.properties[i].state;
+      this.addressObj.zip_code = this.properties[i].zipcode;
+      
+      // let getMarker = this.maps.Marker.getDraggable();
+      // console.log(getMarker);
+      // let setMarker = this.maps.Marker.setDraggable(true);
+      // console.log(setMarker);
+
+      this.$geocoder.send(this.addressObj, (response) => {
+        const marker = response.results[0].geometry.location;
+        console.log(marker);
+        this.locationMarkers.push({ position: marker });
+        this.locPlaces.push(this.marker);
+        this.loaded = true;
+        console.log("Hiiii");
+      });
       }
     },
   },
