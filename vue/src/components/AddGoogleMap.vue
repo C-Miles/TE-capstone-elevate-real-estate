@@ -34,15 +34,14 @@ export default {
       locationMarkers: [],
       locPlaces: [],
       existingPlace: null,
-      addressObj: 
-        {
-          address_line_1: '',
-          address_line_2: '',
-          city: '',
-          state: '',
-          zip_code: '',
-          country: 'United States',
-        },
+      addressObj: {
+        address_line_1: "",
+        address_line_2: "",
+        city: "",
+        state: "",
+        zip_code: "",
+        country: "United States",
+      },
     };
   },
 
@@ -82,35 +81,33 @@ export default {
         this.loaded = true;
       });
     },
-    
+
     activePropertiesList: function () {
       this.properties = this.$store.state.properties;
-      let test = this.properties.length  
+      let test = this.properties.length;
       console.log(test);
 
       for (let i = 0; i < this.properties.length; i++) {
-      //this.loaded = false;
-      this.addressObj.address_line_1 = this.properties[i].address;
-      this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
-      this.addressObj.city = this.properties[i].city;
-      this.addressObj.state = this.properties[i].state;
-      this.addressObj.zip_code = this.properties[i].zipcode;
-      this.$geocoder.send(this.addressObj, (response) => {
-        const marker = response.results[0].geometry.location;
-        this.locationMarkers.push({ position: marker });
-        this.locPlaces.push(this.marker);
-        this.loaded = true;
-        console.log("Hiiii");
-      });
+        //this.loaded = false;
+        this.addressObj.address_line_1 = this.properties[i].address;
+        this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
+        this.addressObj.city = this.properties[i].city;
+        this.addressObj.state = this.properties[i].state;
+        this.addressObj.zip_code = this.properties[i].zipcode;
+        this.$geocoder.send(this.addressObj, (response) => {
+          const marker = response.results[0].geometry.location;
+          this.locationMarkers.push({ position: marker});
+          this.locPlaces.push(this.marker);
+          this.loaded = true;
+        });
       }
     },
   },
-    created() {
-      this.activePropertiesList();
+  created() {
+    this.activePropertiesList();
   },
 };
 </script>
 
 <style>
-
 </style>

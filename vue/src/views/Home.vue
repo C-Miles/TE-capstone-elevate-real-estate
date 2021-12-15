@@ -29,27 +29,27 @@ export default {
 
 h1 {
   padding: 1rem;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 3rem;
 }
 
-banner p {
+.banner p {
   padding: 1rem;
-  font-size: large
+  font-size: large;
 }
 
 #properties-link {
   text-decoration: none;
-    font-size:18px;
-    color: rgba(255,255,255,1);
-    margin: 90px auto;
-    display: block;
-    font-weight: bold;
-    border: 2px solid rgba(255,255,255,1);
-    width: 18%;
-    height: 75px;
-    line-height: 75px;
-    text-align: center;
-    border-radius: 7px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 1);
+  margin: 90px auto;
+  display: block;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 1);
+  width: 18%;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border-radius: 7px;
 }
 </style>
