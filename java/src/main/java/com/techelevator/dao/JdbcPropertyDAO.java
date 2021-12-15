@@ -111,6 +111,7 @@ public class JdbcPropertyDAO implements PropertyDAO {
      * @return
      */
     private long getMaxIdPlusOne() {
+
         return getMaxID() + 1;
     }
 }
