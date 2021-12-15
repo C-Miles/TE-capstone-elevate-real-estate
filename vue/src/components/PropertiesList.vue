@@ -6,8 +6,7 @@
       <input type="text" v-model="filter.monthlyRent" placeholder="Max Monthly Rent"/>
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
-   <!-- <add-property></add-property> -->
-
+    <add-property></add-property>
     <property-list-item
       v-for="currentProperty in filteredList"
       v-bind:key="currentProperty.id"
@@ -19,8 +18,7 @@
 <script>
 import PropertyListItem from "../components/PropertyListItem";
 import propertyService from "../services/PropertyService";
-//import AddProperty from './AddProperty.vue';
-
+import AddProperty from './AddProperty.vue';
 export default {
   name: "properties-list",
   data() {
@@ -35,13 +33,13 @@ export default {
   },
   components: {
     PropertyListItem,
-    //AddProperty
+    AddProperty
   },
   computed: {
     properties() {
       return this.$store.state.properties;
     },
-
+    methods: {
     filteredList() {
       let filteredProperties = this.$store.state.properties;
       if (this.filter.propertyName != "") {
@@ -66,16 +64,13 @@ export default {
           return property.zipcode == this.filter.zipcode;
         });
       }
-
       return filteredProperties;
     },
-
+    },
   },
-
   created() {
     propertyService
-      .getAllProperties()
-      .then((response) => {
+      .getAllProperties().then((response) => {
         this.$store.commit("SET_PROPERTIES", response.data);
       })
       .catch((error) => {
@@ -84,7 +79,6 @@ export default {
   },
 };
 </script>
-
 <style>
 input {
   min-width: 20px;
@@ -92,19 +86,3 @@ input {
   border-radius: 5px;
   height: 30px;  
 }
-
-::placeholder {
-  color: whitesmoke;
-  text-align: center;
-}
-
-.filter-boxes input {
-  margin: 10px;
-  height: 1.5rem;
-  width: 10rem;
-  display: inline;
-  border-radius: 5px;
-  background-color: rgb(139, 121, 121);
-}
-
-</style>

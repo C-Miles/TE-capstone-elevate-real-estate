@@ -64,8 +64,7 @@ export default {
   // props: ['property'],
   data() {
     return {
-      pause: false,
-      testing: false,
+  
       property: {
         address: "",
         propertyId: 0,
@@ -108,7 +107,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-        this.pause = true;
+       
     },
     // v-on:click.prevent="addProperty"
    // addProperty() {
@@ -126,7 +125,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-        this.testing = true;
+      
         document.location.reload(true);
     },
   },
