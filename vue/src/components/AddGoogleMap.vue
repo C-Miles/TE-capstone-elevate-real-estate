@@ -21,7 +21,7 @@
         :position="m.position"
         :draggable="true"
         :clickable="true"
-        :title="locationDetails[index]"
+        :title="locationName[index] +' | ' + locationDetails[index]"
         @click="center = m.position"
         id="Marker"
       ></gmap-marker>
@@ -35,8 +35,6 @@ export default {
   data() {
     return {
       properties: [],
-      //loaded: false,          @mouseover="'test'"
-      
       center: {
         lat: 39.96987,
         lng: -82.96812,
@@ -47,6 +45,8 @@ export default {
       locPlaces: [],
       locationDetails: [],
       existingPlace: null,
+      locationName: [],
+      propertyName: '',
       addressObj: {
         address_line_1: "",
         address_line_2: "",
@@ -58,14 +58,11 @@ export default {
     };
   },
 
-  mounted() {
-    //this.createApartmentMarkers();
+ // mounted() {},
+  created() {
+    this.activePropertiesList();
   },
-
   methods: {
-    //code adding
-    //document.getElementById("Marker").addEventListener("click", ),
-
     initMarker(loc) {
       this.existingPlace = loc;
     },
@@ -105,52 +102,42 @@ export default {
     },
     createApartmentMarkers: function () {
       this.$geocoder.send(this.addressObj, (response) => {
-        const marker = response.results[0].geometry.location;
-
-        this.locationMarkers.push({ position: marker });
-
-        this.locPlaces.push(this.marker);
-       // console.log(this.locationMarkers[0]);
-        this.loaded = true;
+          const marker = response.results[0].geometry.location;
+          console.log(response.results[0]);
+          this.locationMarkers.push({ position: marker});
+          console.log(this.locationMarkers);
+          this.locPlaces.push(this.marker);
+          this.customInfo = response.results[0].formatted_address;
+          console.log(this.customInfo);
+          this.locationDetails.push(this.customInfo);
+           
+          console.log("Hiiii");
       });
     },
-
+    createLocationName: function () {
+      this.$geocoder.send(this.propertyName, (response) => {
+        const testing = response.results[0];
+        console.log(testing);
+      });
+    },
     activePropertiesList: function () {
       this.properties = this.$store.state.properties;
-      let test = this.properties.length;
-      console.log(test);
 
       for (let i = 0; i < this.properties.length; i++) {
-        //this.loaded = false;
         this.addressObj.address_line_1 = this.properties[i].address;
         this.addressObj.address_line_2 = this.properties[i].apartmentNumber;
         this.addressObj.city = this.properties[i].city;
         this.addressObj.state = this.properties[i].state;
         this.addressObj.zip_code = this.properties[i].zipcode;
-       // this.addressObj.customInfo = this.addressObj.address_line_1 + this.addressObj.address_line_2 + this.addressObj.city + this.addressObj.state + this.addressObj.zip_code;
-        //this.locationDetails.push(this.customInfo);
-        // let getMarker = this.maps.Marker.getDraggable();
-        // console.log(getMarker);
-        // let setMarker = this.maps.Marker.setDraggable(true);
-        // console.log(setMarker);
+        this.propertyName = this.properties[i].propertyName;
+        this.locationName.push(this.propertyName);
   
-        this.$geocoder.send(this.addressObj, (response) => {
-          const marker = response.results[0].geometry.location;
-        console.log(response.results[0].formatted_address);
-         this.locationMarkers.push({ position: marker });
-          console.log(this.locationMarkers);
-          this.locPlaces.push(this.marker);
-          this.customInfo = response.results[0].formatted_address;
-          this.locationDetails.push(this.customInfo);
-          this.loaded = true;
-          console.log("Hiiii");
-        });
+        this.createApartmentMarkers();
+    
+       
         console.log(this.customInfo);
       }
     },
-  },
-  created() {
-    this.activePropertiesList();
   },
 };
 </script>
@@ -158,5 +145,6 @@ export default {
 <style>
 #Marker {
   font: black;
+  background: grey;
 }
 </style>
