@@ -94,10 +94,12 @@ ROLLBACK;
        -- list of properties
        SELECT * FROM property;
        JOIN address ON property.address_id = address.address_id;
+       
        -- list of units
        SELECT * FROM unit;
        SELECT * FROM address;
-
+       
+       SELECT property_name,  
        
        INSERT INTO property (property_name, image_name, address_id) VALUES (1, 1, 1) RETURNING property_id;
        ROLLBACK;
