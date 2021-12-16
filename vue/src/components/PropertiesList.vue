@@ -18,7 +18,7 @@
       />
       <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
-    <add-property v-show="$store.state.admin === 'ROLE_ADMIN'"></add-property>
+    <add-property v-if="($store.state.role == 'ROLE_ADMIN')"></add-property>
     <div class="properties">
       <property-list-item
         v-for="currentProperty in filteredList"

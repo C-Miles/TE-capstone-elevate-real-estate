@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="nav-menu">
-      <div id="logo"><img src=""/> Elevate Real Estate</div>
+      <div id="logo"><img src="../public/house-34.png" id='icon'> Elevate Real Estate</div>
       <div id="menu">
         <ul>
           <li>
@@ -27,7 +27,7 @@
             >
           </li>
           <li>
-            <router-link v-show="$store.state.admin == 'ROLE_USER'" class="router-link-idk" v-bind:to="{ name: 'payment' }"
+            <router-link  v-show="!($store.state.role == 'ROLE_ADMIN')" class="router-link-idk" v-bind:to="{ name: 'payment' }"
               >Pay Rent</router-link
             >
           </li>
@@ -60,6 +60,12 @@
 * {
   margin: 0;
   box-sizing: border-box;
+}
+
+#icon {
+  color: white;
+  width: 25px;
+  display: inline-block;
 }
 
 #app {
@@ -129,13 +135,13 @@ h1, p {
 }
 
 form {
-	margin:10% auto 0 auto;
-	padding:30px;
+  margin: auto auto 1rem auto;
 	width:400px;
 	height:auto;
 	overflow:hidden;
 	background:white;
 	border-radius:10px;
+  position: relative;
 }
 
 form label {

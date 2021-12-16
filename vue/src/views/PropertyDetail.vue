@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="details">
     <h1>Details for {{ currentProperty.propertyName }}</h1>
     <p>{{ currentProperty.address }}</p>
     <p><img v-bind:src="currentProperty.imageName" /></p>
@@ -45,7 +45,8 @@ export default {
 };
 </script>
 <style>
-div {
+
+#details {
   text-align: center
 }
 
