@@ -11,5 +11,5 @@ public interface PropertyDAO {
 
     Property addProperty(Property property);
 
-    Property get(long id);
+    Property getProperties(long id);
 }

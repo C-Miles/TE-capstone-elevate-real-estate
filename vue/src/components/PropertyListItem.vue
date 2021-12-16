@@ -38,7 +38,7 @@ export default {
   grid-template-areas:
     "header  header  header"
     "image image content";
-  background-color: rgba(21, 37, 54, 0.7);
+  background-color: rgba(13, 25, 37, 0.7);
   color: whitesmoke;
   align-items: center;
   max-width: 100%
@@ -46,13 +46,15 @@ export default {
 
 #header {
   grid-area: header;
+  text-align: center;
+  padding-top: 20px;
 }
 
 #image {
   grid-area: image;
-  width: 200px;
-  height: 150px;
-  margin: 2rem;
+  width: 400px;
+  padding-left: 10%;
+  height: 250px;
   filter: drop-shadow(5px 5px 5px #131111);
 }
 
@@ -62,7 +64,7 @@ export default {
 }
 
 .router-link-property-details {
-  grid-area: router-link-property-details;
+  grid-area: content;
   background-color: whitesmoke;
   text-decoration: none;
   color: black;
@@ -74,4 +76,5 @@ export default {
   text-align: center;
   margin: 2rem;
 }
+
 </style>

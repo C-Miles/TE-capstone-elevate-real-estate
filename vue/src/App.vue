@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="nav-menu">
-      <div id="logo"><img src=""/> Elevate Real Estate</div>
+      <div id="logo"><img src="../public/house-34.png" id='icon'> Elevate Real Estate</div>
       <div id="menu">
         <ul>
           <li>
@@ -27,7 +27,7 @@
             >
           </li>
           <li>
-            <router-link v-show="$store.state.admin == 'ROLE_USER'" class="router-link-idk" v-bind:to="{ name: 'payment' }"
+            <router-link  v-show="($store.state.role == 'ROLE_USER')" class="router-link-idk" v-bind:to="{ name: 'payment' }"
               >Pay Rent</router-link
             >
           </li>
@@ -62,13 +62,19 @@
   box-sizing: border-box;
 }
 
+#icon {
+  color: white;
+  width: 25px;
+  display: inline-block;
+}
+
 #app {
   border: 1px solid black;
   width: 100%;
   height: auto;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(rgb(2, 1, 14), rgba(0, 0, 0, 0.1)),
+  background-image: linear-gradient(rgb(2, 1, 14), rgba(0, 0, 0, 0.2)),
     url(../public/backgroundapartmentimage.jpg);
   color: rgba(255, 255, 255, 1);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -129,22 +135,55 @@ h1, p {
 }
 
 form {
-	margin:10% auto 0 auto;
-	padding:30px;
+  margin: auto auto 1rem auto;
 	width:400px;
 	height:auto;
 	overflow:hidden;
 	background:white;
 	border-radius:10px;
+  position: relative;
 }
 
-form label {
-	font-size:14px;
-	color:darkgray;
+input {
+  border: 0;
+  border-bottom: 2px solid #9e9e9e;
+  outline: none;
+  transition: .2s ease-in-out;
+  box-sizing: border-box;
+}
+
+label {
+  top: 0;
+  left: 0; right: 0;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  cursor: text;
+  transition: .2s ease-in-out;
+  box-sizing: border-box;
+}
+
+input,
+label {
+  width: 100%;
 }
 
 #contact {
   text-decoration: none;
   color: white;
 }
+
+button {
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #ca4745;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	transition: all 0.4s ease 0s;
+  position: inline;
+  margin: auto
+}
+
 </style>

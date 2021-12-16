@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
+    <h1>Login</h1>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -79,6 +79,14 @@ export default {
 
 .sr-only {
   color: whitesmoke; 
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 60px;
 }
 
 </style>

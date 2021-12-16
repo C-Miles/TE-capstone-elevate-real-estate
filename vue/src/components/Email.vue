@@ -1,5 +1,5 @@
 <template>
-  <form ref="form" @submit.prevent="sendEmail">
+  <form ref="form" @submit.prevent="sendEmail" id='email'>
     <label>To:</label>
     <input type="text" name="to_name">
     <label>From:</label>
@@ -30,5 +30,16 @@ export default {
 </script>
 
 <style>
-
+#email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 60px;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+}
 </style>

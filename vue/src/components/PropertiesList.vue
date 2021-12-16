@@ -1,24 +1,24 @@
 <template>
   <div>
     <p class="filter-boxes">
-      <input
+      <input id="filter"
         type="text"
         v-model="filter.propertyName"
         placeholder="Property Name"
       />
-      <input
+      <input id="filter"
         type="text"
         v-model="filter.numberOfRooms"
         placeholder="Number of Rooms"
       />
-      <input
+      <input id="filter"
         type="text"
         v-model="filter.monthlyRent"
         placeholder="Max Monthly Rent"
       />
-      <input type="text" v-model="filter.zipcode" placeholder="Zipcode" />
+      <input id="filter" type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
-    <add-property v-show="$store.state.admin === 'ROLE_ADMIN'"></add-property>
+    <add-property></add-property>
     <div class="properties">
       <property-list-item
         v-for="currentProperty in filteredList"
@@ -104,4 +104,21 @@ export default {
   grid-gap: 20px;
   max-width: 100%
 }
+
+#filter {
+  transition: all ease 0.1s;
+  border: none;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  padding: 1rem;
+  margin: 1rem;
+  outline: none;
+  font-size: 14px;
+  background: hsla(0, 100%, 100%, 1);
+  color: #333;
+  font-family: inherit;
+  font-weight: bold;
+  width: 160px;
+  box-sizing: border-box;
+}
+
 </style>
