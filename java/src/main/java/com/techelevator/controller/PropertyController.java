@@ -8,11 +8,20 @@ import com.techelevator.model.Application;
 import com.techelevator.model.Payment;
 import com.techelevator.model.Property;
 
+
 import com.techelevator.model.Unit;
 
 //import org.springframework.security.access.prepost.PreAuthorize;
+
+// import org.springframework.security.access.prepost.PreAuthorize;
+import com.techelevator.model.Unit;
+
+//import org.springframework.security.access.prepost.PreAuthorize;
+
+
 import org.springframework.web.bind.annotation.*;
 
+import javax.el.PropertyNotFoundException;
 import java.security.Principal;
 import java.util.List;
 
@@ -57,12 +66,11 @@ public class PropertyController {
     }
     @RequestMapping(path = "/properties/{id}", method=RequestMethod.GET)
     public Property getProperty(@PathVariable long id) {
-
-        return propertyDAO.get(id);
+        return propertyDAO.getProperties(id);
     }
 
     @RequestMapping(path="/properties/{id}/units", method=RequestMethod.GET)
-    public List<Unit> getAllUnitsById(@PathVariable("id") long propertyId) {
+    public List<Unit> getAllUnitsById(@PathVariable("id") long propertyId) throws PropertyNotFoundException {
         return unitDAO.getAllUnitsByPropertyId(propertyId);
     }
 

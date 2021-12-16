@@ -35,6 +35,19 @@ public class JdbcPropertyDAO implements PropertyDAO {
         return properties;
     }
 
+    @Override
+    public Property getProperties(long propId) {
+
+        Property property = new Property();
+        for ( Property eachProperty : getAllProperties()) {
+            if (eachProperty.getPropertyId() == propId) {
+                property = eachProperty;
+            }
+        }
+        return property;
+    }
+
+
     @Transactional
     @Override
     public Property addProperty(Property property) {
@@ -45,11 +58,6 @@ public class JdbcPropertyDAO implements PropertyDAO {
         Property completeProperty = insertUnit(forInsertUnit);
 
         return completeProperty;
-    }
-
-    @Override
-    public Property get(long id) {
-        return null;
     }
 
     public Property insertAddress(Property property) {
