@@ -7,12 +7,12 @@ import com.techelevator.dao.UnitDAO;
 import com.techelevator.model.Application;
 import com.techelevator.model.Payment;
 import com.techelevator.model.Property;
-<<<<<<< HEAD
+
 // import org.springframework.security.access.prepost.PreAuthorize;
 import com.techelevator.model.Unit;
-=======
+
 //import org.springframework.security.access.prepost.PreAuthorize;
->>>>>>> 14a8cda81fc49fde3316308493697ae463080050
+
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
