@@ -54,7 +54,6 @@ export default {
         state: "",
         zip_code: "",
         country: "United States",
-        
       },
     };
   },

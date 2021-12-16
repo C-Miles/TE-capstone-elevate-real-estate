@@ -4,7 +4,7 @@
     <p>{{ currentProperty.address }}</p>
     <p><img v-bind:src="currentProperty.imageName" /></p>
     <router-link
-      class="router-link-idk"
+      id="applybtn"
       :to="{ name: 'application', params: { unitID: currentProperty.unitID } }"
       >Apply</router-link
     >
@@ -51,5 +51,26 @@ div {
 
 #property-details {
   width: 60%;
+  margin: 40px auto;
 }
+
+#applybtn {
+  text-decoration: none;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 1);
+  margin: 90px auto;
+  display: block;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 1);
+  width: 18%;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border-radius: 7px;
+}
+
+#applybtn:hover {
+  background-color: rgb(14, 14, 41);
+}
+
 </style>

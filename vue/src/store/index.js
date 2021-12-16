@@ -11,6 +11,16 @@ Vue.use(Vuex)
  */
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
+let isAdmin = '';
+if (currentToken != null && (currentUser.authorities[0].name == 'ROLE_ADMIN')) {
+  isAdmin = 'ROLE_ADMIN';
+}
+if (currentToken != null && (currentUser.authorities[0].name == 'ROLE_USER')) {
+  isAdmin = 'ROLE_USER';
+}
+
+// console.log('HELLLOOOOO' + currentUser.authorities[0].name);
+// console.log(isAdmin)
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -21,6 +31,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     properties: [],
+    admin: isAdmin,
     activeUnitID: 0,
     filter: 0
   },
