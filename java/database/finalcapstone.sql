@@ -111,3 +111,5 @@ INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, pr
 START TRANSACTION;
 INSERT INTO application(rent_app_id, first_name, last_name, email_address, phone_number, unit_id) VALUES (DEFAULT, 'sonam', 'miles', 'johndoe@aol.com', 1234567890, 1);
 ROLLBACK;
+
+INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'B', 1300, 1, 1);

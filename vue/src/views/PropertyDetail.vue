@@ -32,7 +32,7 @@ export default {
 
   created() {
     const activeUnitID = this.$route.params.unitID;
-    this.$store.commit("SET_ACTIVE_PROPERTY", activeUnitID);
+    this.$store.commit("SET_ACTIVE_UNIT", activeUnitID);
   },
 
   computed: {
