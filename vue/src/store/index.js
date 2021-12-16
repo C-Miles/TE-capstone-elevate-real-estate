@@ -28,9 +28,11 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     properties: [],
+    units: [],
     role: userRole,
     activeUnitID: 0,
-    filter: 0
+    filter: 0,
+    activePropertyId: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -52,8 +54,16 @@ export default new Vuex.Store({
     SET_PROPERTIES(state, properties) {
       state.properties = properties;
     },
-    SET_ACTIVE_PROPERTY (state, unitID) {
+    SET_ACTIVE_UNIT (state, unitID) {
       state.activeUnitID = unitID;
+    },
+
+    SET_ACTIVE_PROPERTY (state, propertyId) {
+      state.activePropertyId = propertyId
+    },
+
+    SET_UNITS (state, units) {
+      state.units = units
     }
    // ADD_PROPERTY(state, property) {
    //   state.properties.push(property);

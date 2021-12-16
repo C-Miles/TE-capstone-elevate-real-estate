@@ -13,6 +13,7 @@ import PayRent from '../components/PayRent.vue'
 import Application from '../components/Application.vue'
 import PropertyDetail from '../views/PropertyDetail'
 import Email from '../components/Email.vue'
+import Units from '../views/Units.vue'
 
 Vue.use(Router)
 
@@ -125,6 +126,15 @@ const router = new Router({
     meta: {
       requiresAuth: false
     }
+    },
+    {
+
+    path: "/properties/:propertyId/units",
+      name: "units",
+      component: Units,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
 })
