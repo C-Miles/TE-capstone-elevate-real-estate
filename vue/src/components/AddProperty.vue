@@ -1,6 +1,10 @@
 <template>
   <div>
-    <button v-on:click.prevent="showForm = true" id="propertybtn">
+    <button
+      v-on:click.prevent="showForm = true"
+      id="propertybtn"
+      v-if="$store.state.role == 'ROLE_ADMIN'"
+    >
       Add Property
     </button>
     <form class="propertyForm" v-show="showForm">
@@ -64,7 +68,6 @@ export default {
   // props: ['property'],
   data() {
     return {
-  
       property: {
         address: "",
         propertyId: 0,
@@ -107,12 +110,11 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-       
     },
     // v-on:click.prevent="addProperty"
-   // addProperty() {
-//this.$store.commit("ADD_PROPERTY", this.property );
-   // },
+    // addProperty() {
+    //this.$store.commit("ADD_PROPERTY", this.property );
+    // },
     saveProperty() {
       propertyService
         .addProperty(this.property)
@@ -125,9 +127,12 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      
-        document.location.reload(true);
+      document.location.reload(true);
     },
   },
 };
 </script>
+<style>
+#propertybtn {
+}
+</style>

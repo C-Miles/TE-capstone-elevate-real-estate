@@ -3,8 +3,8 @@
     <div>
       <h2>Add A Pin</h2>
       <label>
-        <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
-        <button @click="addLocationMarker">Search</button>
+        <gmap-autocomplete @place_changed="initMarker" id="filter"></gmap-autocomplete>
+        <button @click="addLocationMarker" id="searchbtn">Search</button>
       </label>
       <br />
     </div>
@@ -159,4 +159,15 @@ export default {
 #Marker {
   font: black;
 }
+
+h2 {
+  padding-top: 20px;
+  text-align: center;
+}
+
+#searchinput {
+  display: block;
+  width: 30%
+}
+
 </style>

@@ -94,7 +94,7 @@ const router = new Router({
       }
     },
     {
-      path: "/properties/:unitID",
+      path: "/properties/:unitID", // /properties/propertyId/units
       name: "propertyDetail",
       component: PropertyDetail,
       meta: {

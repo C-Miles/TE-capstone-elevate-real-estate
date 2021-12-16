@@ -47,6 +47,11 @@ public class JdbcPropertyDAO implements PropertyDAO {
         return completeProperty;
     }
 
+    @Override
+    public Property get(long id) {
+        return null;
+    }
+
     public Property insertAddress(Property property) {
 
         String sqlAddress = "INSERT INTO address (address_id, address, city, state, zip) VALUES (default, ?, ?, ?, ?) RETURNING address_id";
