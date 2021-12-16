@@ -24,9 +24,8 @@ public class JdbcPropertyDAO implements PropertyDAO {
 
         List<Property> properties = new ArrayList<Property>();
 
-        String sql = "SELECT property_name, image_name, unit_id, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property " +
-                "JOIN unit ON property.property_id = unit.property_id " +
-                "JOIN address ON property.address_id = address.address_id";
+        String sql = "SELECT property_id, property_name, image_name, property.address_id, address, city, state, zip FROM property " +
+                "JOIN address on address.address_id = property.address_id";
 
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
         while (rows.next()) {
@@ -34,6 +33,36 @@ public class JdbcPropertyDAO implements PropertyDAO {
         }
         return properties;
     }
+
+    private Property mapRowToProperty(SqlRowSet rows) {
+        Property property = new Property();
+
+        property.setAddress(rows.getString("address"));
+        property.setPropertyId(rows.getLong("property_id"));
+        property.setImageName(rows.getString("image_name"));
+        property.setPropertyName(rows.getString("property_name"));
+        property.setCity(rows.getString("city"));
+        property.setState(rows.getString("state"));
+        property.setZipcode(rows.getInt("zip"));
+
+        return property;
+    }
+
+//    @Override
+//    public List<Property> getAllProperties() {
+//
+//        List<Property> properties = new ArrayList<Property>();
+//
+//        String sql = "SELECT property_name, image_name, unit_id, rooms, monthly_rent, address, apartment_number, property.property_id AS property_id, city, state, zip FROM property " +
+//                "JOIN unit ON property.property_id = unit.property_id " +
+//                "JOIN address ON property.address_id = address.address_id";
+//
+//        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+//        while (rows.next()) {
+//            properties.add(mapRowToProperty(rows));
+//        }
+//        return properties;
+//    }
 
     @Override
     public Property getProperties(long propId) {
@@ -89,23 +118,23 @@ public class JdbcPropertyDAO implements PropertyDAO {
         return property;
     }
 
-    private Property mapRowToProperty(SqlRowSet rows) {
-        Property property = new Property();
-
-        property.setAddress(rows.getString("address"));
-        property.setPropertyId(rows.getLong("property_id"));
-        property.setImageName(rows.getString("image_name"));
-        property.setPropertyName(rows.getString("property_name"));
-        property.setUnitID(rows.getLong("unit_id"));
-        property.setApartmentNumber(rows.getString("apartment_number"));
-        property.setMonthlyRent(rows.getDouble("monthly_rent"));
-        property.setNumberOfRooms(rows.getInt("rooms"));
-        property.setCity(rows.getString("city"));
-        property.setState(rows.getString("state"));
-        property.setZipcode(rows.getInt("zip"));
-
-        return property;
-    }
+//    private Property mapRowToProperty(SqlRowSet rows) {
+//        Property property = new Property();
+//
+//        property.setAddress(rows.getString("address"));
+//        property.setPropertyId(rows.getLong("property_id"));
+//        property.setImageName(rows.getString("image_name"));
+//        property.setPropertyName(rows.getString("property_name"));
+//        property.setUnitID(rows.getLong("unit_id"));
+//        property.setApartmentNumber(rows.getString("apartment_number"));
+//        property.setMonthlyRent(rows.getDouble("monthly_rent"));
+//        property.setNumberOfRooms(rows.getInt("rooms"));
+//        property.setCity(rows.getString("city"));
+//        property.setState(rows.getString("state"));
+//        property.setZipcode(rows.getInt("zip"));
+//
+//        return property;
+//    }
 
     private long getMaxID() {
         long maxID = 0;
