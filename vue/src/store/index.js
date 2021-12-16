@@ -14,9 +14,9 @@ const currentUser = JSON.parse(localStorage.getItem('user'));
 let userRole = '';
 
 if (currentToken == null) {
-  userRole = 'ROLE_USER';
+  userRole = '';
 } else {
-  userRole = currentUser.authorities[0].name;
+  userRole = currentUser.authorities[0].name; //ROLE_USER or ROLE_ADMIN
 }
 
 if(currentToken != null) {
