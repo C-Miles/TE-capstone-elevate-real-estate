@@ -6,7 +6,7 @@
         v-model="filter.propertyName"
         placeholder="Property Name"
       />
-      <input id="filter"
+      <!-- <input id="filter"
         type="text"
         v-model="filter.numberOfRooms"
         placeholder="Number of Rooms"
@@ -15,7 +15,7 @@
         type="text"
         v-model="filter.monthlyRent"
         placeholder="Max Monthly Rent"
-      />
+      /> -->
       <input id="filter" type="text" v-model="filter.zipcode" placeholder="Zipcode" />
     </p>
     <add-property></add-property>
@@ -64,16 +64,16 @@ export default {
             .includes(this.filter.propertyName.toLowerCase());
         });
       }
-      if (this.filter.numberOfRooms > 0) {
-        filteredProperties = filteredProperties.filter((property) => {
-          return property.numberOfRooms == this.filter.numberOfRooms;
-        });
-      }
-      if (this.filter.monthlyRent > 0) {
-        filteredProperties = filteredProperties.filter((property) => {
-          return property.monthlyRent <= this.filter.monthlyRent;
-        });
-      }
+      // if (this.filter.numberOfRooms > 0) {
+      //   filteredProperties = filteredProperties.filter((property) => {
+      //     return property.numberOfRooms == this.filter.numberOfRooms;
+      //   });
+      // }
+      // if (this.filter.monthlyRent > 0) {
+      //   filteredProperties = filteredProperties.filter((property) => {
+      //     return property.monthlyRent <= this.filter.monthlyRent;
+      //   });
+      // }
       if (this.filter.zipcode > 0) {
         filteredProperties = filteredProperties.filter((property) => {
           return property.zipcode == this.filter.zipcode;
