@@ -3,7 +3,7 @@
     <button
       v-on:click.prevent="showForm = true"
       id="propertybtn"
-      v-if="$store.state.role == 'ROLE_ADMIN'"
+      v-if="isShowAddProperty"
     >
       Add Property
     </button>
@@ -87,6 +87,17 @@ export default {
     };
   },
 
+  computed: {
+    isShowAddProperty() {
+      if (this.$store.state.token) {
+        if (this.$store.state.user.authorities[0].name == "ROLE_ADMIN") {
+          return true;
+        }
+      }
+      return false;
+    },
+  },
+
   methods: {
     uploadImage(e) {
       const file = e.target.files[0];
@@ -120,7 +131,7 @@ export default {
         .addProperty(this.property)
         .then((response) => {
           if (response.status === 200) {
-            alert("Boom added");
+            alert("Property Added");
             this.showForm = false;
           }
         })
@@ -128,6 +139,7 @@ export default {
           console.log(error);
         });
       document.location.reload(true);
+      // this.$router.push({name: 'properties'})
     },
   },
 };
