@@ -14,4 +14,9 @@ applyForApartment(application) {
   return axios.post("/application", application)
 },
 
+getUnitsByPropertyId(id) {
+  return axios.get("properties/" + id + "/units")
 }
+
+}
+

@@ -15,7 +15,7 @@
         <p>Monthly Rent: ${{ property.monthlyRent }}</p>
         <router-link
           class="router-link-property-details"
-          :to="{ name: 'propertyDetail', params: { unitID: property.unitID } }"
+          :to="{ name: 'units', params: { propertyId: property.propertyId } }"
           >View More Details</router-link
         >
       </div>
