@@ -19,6 +19,7 @@ CREATE TABLE property (property_id serial primary key,
 CREATE TABLE unit (unit_id serial primary key,
         rooms int,
         apartment_number varchar(2),
+        image_name varchar,
         monthly_rent numeric(18,2),
         address_id bigint,
         property_id bigint,
@@ -53,27 +54,26 @@ CREATE TABLE application (
 );
                 
 INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '170 N Champion Ave', 'Columbus', 'OH', 43203);
-INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Legacy Pointe', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1);
-INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 1, 1);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Legacy Pointe Places', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 1, 'A', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1150, 1, 1);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'B', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1300, 1, 1);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1550, 1, 1);
 
-INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'A', 1200, 1, 1);
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '221 E Kelso Rd', 'Columbus', 'OH', 43202);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Meadows Haven', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 2);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'C', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1200, 2, 2);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1650, 2, 2);
 
-INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '211 E Kelso Rd', 'Columbus', 'OH', 43202);
-INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Clintonville Way', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 2);
-INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 2, 2);
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '1221 Grandview Ave', 'Columbus', 'OH', 43212);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Grande Apartments', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 1, 'A', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 900, 3, 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'B', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1175, 3, 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'C', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1125, 3, 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'D', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1400, 3, 3);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 4, 'E', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1800, 3, 3);
 
-INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '6700 Allister Way', 'Columbus', 'OH', 43235);
-INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Sawmill', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 3);
-INSERT INTO unit (unit_id, rooms, apartment_number, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'C', 1500, 3, 3);
+INSERT INTO address (address_id, address, city, state, zip) VALUES (DEFAULT, '254 West Olentangy Street', 'Powell', 'OH', 43065);
+INSERT INTO property (property_id, property_name, image_name, address_id) VALUES (DEFAULT, 'Greater Columbus Rentals', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 4);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 2, 'A', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1175, 4, 2);
+INSERT INTO unit (unit_id, rooms, apartment_number, image_name, monthly_rent, address_id, property_id) VALUES (DEFAULT, 3, 'B', 'https://firebasestorage.googleapis.com/v0/b/delta-elevate.appspot.com/o/aptComplex.jpeg?alt=media&token=e2531f08-0d3a-4927-9e92-7c1503830afd', 1350, 4, 2);
 
--- SELECT COUNT(property_name, image_name, unit_id, rooms, monthly_rent, address, apartment_number, city, state, zip), property.property_id 
-SELECT COUNT(property_name, image_name, address, apartment_number, city, state, zip) AS test, property.property_id 
-AS property_id FROM property 
-JOIN unit ON property.property_id = unit.property_id
-JOIN address ON property.address_id = address.address_id
-GROUP BY property.property_id
-ORDER BY test;
-
-SELECT COUNT(property_name) AS properties_list, property.property_id
-FROM property
-GROUP BY property.property_id;
