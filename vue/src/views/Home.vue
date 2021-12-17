@@ -29,7 +29,6 @@ export default {
 
 h1 {
   padding: 1rem;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 3rem;
 }
 

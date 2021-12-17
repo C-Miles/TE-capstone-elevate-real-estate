@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Properties</h1>
+    <h1>View Properties</h1>
     <span></span>
     <add-google-map id="googleMap" v-if="$store.state.properties.length > 0"/>
     <properties-list></properties-list>

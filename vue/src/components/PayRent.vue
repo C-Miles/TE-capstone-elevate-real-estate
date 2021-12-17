@@ -11,7 +11,7 @@
         <input
           type="text"
           v-model="payment.cardNumber"
-          placeholder="123 456 789 101"
+          placeholder="123456789"
         />
         <label>Expiration Date:</label>
         <input
@@ -91,13 +91,14 @@ export default {
 </script>
 <style>
 #paymentbtn {
-  padding: auto;
   width: auto;
   background: #1abc9c;
   border: none;
   color: white;
-  margin: auto;
   border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 20%;
+  color: whitesmoke;
 }
 
 .receipt {
@@ -105,16 +106,22 @@ export default {
   flex-direction: column;
   margin: 20px;
   margin: 10px;
-  width: 100%;
-  padding: 70px 0px 270px 0px;
-  min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 #payment-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
   padding: 60px;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  margin: auto;
 }
 </style>

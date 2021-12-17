@@ -102,7 +102,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  max-width: 100%
+  max-width: 80%;
+  margin: 1rem 1rem 1rem 5rem;
 }
 
 #filter {
@@ -113,12 +114,15 @@ export default {
   margin: 1rem;
   outline: none;
   font-size: 14px;
-  background: hsla(0, 100%, 100%, 1);
+  background: rgb(255, 255, 255, 0.8);
   color: #333;
-  font-family: inherit;
   font-weight: bold;
   width: 160px;
   box-sizing: border-box;
+}
+
+.filter-boxes {
+  margin-left: 38%;
 }
 
 </style>

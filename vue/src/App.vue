@@ -82,8 +82,7 @@ export default {
 }
 
 #icon {
-  color: white;
-  width: 25px;
+  width: 30px;
   display: inline-block;
 }
 
@@ -150,17 +149,15 @@ footer {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-h1,
-p {
+h1 {
   text-align: center;
 }
 
 form {
   margin: auto auto 1rem auto;
-  width: 400px;
+  width: 30%;
   height: auto;
-  overflow: hidden;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   position: relative;
 }
@@ -177,7 +174,7 @@ label {
   top: 0;
   left: 0;
   right: 0;
-  color: #616161;
+  color: #1f1c1c;
   display: flex;
   align-items: center;
   cursor: text;
@@ -196,15 +193,14 @@ label {
 }
 
 button {
-  color: #fff !important;
   text-transform: uppercase;
-  text-decoration: none;
   background: #ca4745;
   padding: 10px;
   border-radius: 5px;
   border: none;
   transition: all 0.4s ease 0s;
   position: inline;
-  margin: auto;
+  margin-top: 10px;
+  color: whitesmoke
 }
 </style>

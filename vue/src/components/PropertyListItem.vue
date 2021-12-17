@@ -10,9 +10,7 @@
           {{ property.address }} <br />
           {{ property.city }}, {{ property.state }} {{ property.zipcode }}
         </p>
-        <p>Apartment: {{ property.apartmentNumber }}</p>
-        <p>Number of Bedrooms: {{ property.numberOfRooms }}</p>
-        <p>Monthly Rent: ${{ property.monthlyRent }}</p>
+
         <router-link
           class="router-link-property-details"
           :to="{ name: 'units', params: { propertyId: property.propertyId } }"
@@ -40,27 +38,29 @@ export default {
     "image image content";
   background-color: rgba(13, 25, 37, 0.7);
   color: whitesmoke;
-  align-items: center;
-  max-width: 100%
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
 }
 
 #header {
   grid-area: header;
   text-align: center;
-  padding-top: 20px;
+  padding: 1rem;
 }
 
 #image {
   grid-area: image;
   width: 400px;
-  padding-left: 10%;
+  height: 250px;
+  padding: 1rem;
   height: 250px;
   filter: drop-shadow(5px 5px 5px #131111);
 }
 
 #content {
   grid-area: content;
-  margin: 2rem;
+  margin: auto;
 }
 
 .router-link-property-details {
@@ -76,5 +76,4 @@ export default {
   text-align: center;
   margin: 2rem;
 }
-
 </style>

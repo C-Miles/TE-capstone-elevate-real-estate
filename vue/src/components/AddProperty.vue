@@ -35,7 +35,11 @@
         <input type="file" @change="uploadImage" id="photo" />
       </div>
       <div>
-        <button id="propertybtn" type="submit" @click.prevent="saveProperty()">
+        <button
+          id="submitpropertybtn"
+          type="submit"
+          @click.prevent="saveProperty()"
+        >
           Submit Property Details
         </button>
       </div>
@@ -145,6 +149,22 @@ export default {
 };
 </script>
 <style>
+.propertyForm {
+  margin: auto;
+  padding: 10px;
+}
+
 #propertybtn {
+  margin-left: 40%;
+  color: whitesmoke;
+  width: 300px;
+  margin-bottom: 10px
+}
+
+#submitpropertybtn {
+  margin-left: 20%;
+  color: whitesmoke;
+  width: 300px;
+  margin-bottom: 10px
 }
 </style>

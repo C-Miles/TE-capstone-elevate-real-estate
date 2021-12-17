@@ -8,7 +8,7 @@
       :to="{ name: 'application', params: { unitID: currentProperty.unitID } }"
       >Apply</router-link
     >
-    <div id="property-details">
+    <div>
     <p>
       Important: Don’t miss out on this apartment through lengthy email
       exchanges and phone calls - apply for a lease now, by selecting your
@@ -45,33 +45,5 @@ export default {
 };
 </script>
 <style>
-
-#details {
-  text-align: center
-}
-
-#property-details {
-  width: 60%;
-  margin: 40px auto;
-}
-
-#applybtn {
-  text-decoration: none;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 1);
-  margin: 90px auto;
-  display: block;
-  font-weight: bold;
-  border: 2px solid rgba(255, 255, 255, 1);
-  width: 18%;
-  height: 75px;
-  line-height: 75px;
-  text-align: center;
-  border-radius: 7px;
-}
-
-#applybtn:hover {
-  background-color: rgb(14, 14, 41);
-}
 
 </style>
