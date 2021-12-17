@@ -36,7 +36,7 @@
         <br />
         <p>Recieved On: {{ new Date().toLocaleString() }}</p>
         <br />
-        <p>Amount Paid: {{ payment.amountPaid }}</p>
+        <p>Amount Paid: ${{ payment.amountPaid }}</p>
         <br />
         <p>Confirmation Code: {{ codeGenerator() }}</p>
         <br />
