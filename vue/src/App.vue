@@ -203,4 +203,13 @@ button {
   margin-top: 10px;
   color: whitesmoke
 }
+
+p {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 10px;
+}
 </style>

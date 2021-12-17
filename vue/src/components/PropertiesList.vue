@@ -121,8 +121,4 @@ export default {
   box-sizing: border-box;
 }
 
-.filter-boxes {
-  margin-left: 38%;
-}
-
 </style>

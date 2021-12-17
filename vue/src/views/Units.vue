@@ -1,12 +1,14 @@
 <template>
-  <div class="deets">
+  <div class="container">
     <h2 id="property-name">{{ Units[0].propertyName }}</h2>
     <img :src="Units[0].imageName" class="pic" />
     <div id="unit-details">
       <div v-for="test in Units" v-bind:key="test.id" >
+          <div class="content">
         <h3>Apartment: {{ test.apartmentNumber }}</h3>
         <p>Number Of Bedrooms: {{ test.numberOfRooms }}</p>
         <p>Monthly Rent: ${{ test.monthlyRent }}</p>
+        </div>
         <router-link
           id="applybtn"
           :to="{ name: 'application', params: { unitID: test.unitID } }"
@@ -40,19 +42,22 @@ export default {
 </script>
 
 <style>
-.pic {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 10px;
-  width: 500px;
-  grid-area: pic;
+
+#unit-details {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5%
 }
 
-#property-name {
-  font-size: 30px;
-  margin: 10px;
-  grid-area: name;
+.pic {
+    display: block;
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 500px;
+    height: 350px;
+    
 }
 
 #applybtn {
@@ -63,22 +68,20 @@ export default {
   border: none;
   transition: all 0.4s ease 0s;
   padding: 10px;
-}
-
-.deets {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "name  name  name"
-    "pic content content";
+  display: block;
+  text-align: center;
   color: whitesmoke;
-  max-width: 70%;
-  margin: auto;
+  margin: 5%;
 }
 
-#unit-details {
-  grid-area: content;
-  padding: auto;
-  margin: auto;
+#property-name {
+    font-size: 250%;
 }
+
+.content {
+    font-size: 120%;
+}
+
+
+
 </style>
