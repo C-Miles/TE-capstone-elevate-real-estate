@@ -2,6 +2,7 @@
   <div>
     <div id="property-container">
       <h2 id="header">{{ property.propertyName }}</h2>
+    
       <img id="image" v-bind:src="property.imageName" />
 
       <div id="content">
@@ -10,9 +11,9 @@
           {{ property.address }} <br />
           {{ property.city }}, {{ property.state }} {{ property.zipcode }}
         </p>
-        <p>Apartment: {{ property.apartmentNumber }}</p>
+        <!-- <p>Apartment: {{ property.apartmentNumber }}</p>
         <p>Number of Bedrooms: {{ property.numberOfRooms }}</p>
-        <p>Monthly Rent: ${{ property.monthlyRent }}</p>
+        <p>Monthly Rent: ${{ property.monthlyRent }}</p> -->
         <router-link
           class="router-link-property-details"
           :to="{ name: 'units', params: { propertyId: property.propertyId } }"
